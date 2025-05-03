@@ -1,5 +1,14 @@
-from ortools.linear_solver import pywraplp
+import json
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+from typing import List
+from ortools.linear_solver import pywraplp
+from BaseModule import BaseModule
+from Modules.Server_Rack import  ServerRack_500
+from Modules.Water_Chiller import WaterChiller_400
+from Modules.Transformer import Transformer_100
 def place_blocks_on_grid(blocks, grid_width, grid_height):
     solver = pywraplp.Solver.CreateSolver('SCIP')
     if not solver:
@@ -9,7 +18,7 @@ def place_blocks_on_grid(blocks, grid_width, grid_height):
     #Position decision variables
     x = [solver.IntVar(0, grid_width, f'x_{i}') for i in range(n)]
     y = [solver.IntVar(0, grid_height, f'y_{i}') for i in range(n)]
-    print(x)
+
     # Ensure each block stays within grid bounds
     for i in range(n):
         w, h = blocks[i]
@@ -48,14 +57,60 @@ def place_blocks_on_grid(blocks, grid_width, grid_height):
 # Example usage
 
 
-modules = [((3, 2),id), ((2, 2)), (1, 4), (1, 4)]
-blocks = [(3, 2), (2, 2), (1, 4), (1, 4)]
+# = [((3, 2),id), ((2, 2)), (1, 4), (1, 4)]
+#blocks = [(3, 2), (2, 2), (1, 4), (1, 4)]
 grid_width = 10
 grid_height = 10
-def solver(modules,grid):
-    positions = place_blocks_on_grid(blocks, grid.width, grid.height)
+
+
+def solve(modules : List[BaseModule],grid_width,grid_heigh) -> List[BaseModule]:
+
+    stripped_modules = [(module.sizeX, module.sizeY) for module in modules]
+    
+    positions = place_blocks_on_grid(stripped_modules, grid_width, grid_heigh)
+
     if positions:
         for i, pos in enumerate(positions):
-            print(f"Block {i} placed at {pos}")
+            modules[i].setPos(pos[0],pos[1])
+            
+        return modules
     else:
         print("No feasible placement found.")
+        return Exception("No feasible placement found.")
+
+
+
+def modules_to_2d(modules: List[BaseModule], grid_width: int = 0, grid_height: int = 0) -> str:
+
+    json_data = {
+        "grid": {
+            "width": grid_width,
+            "height": grid_height
+        },
+        "blocks": [
+            {
+                "id": module.id,
+                "name": module.name,
+                "type": module.__class__.__name__ ,
+                "color": module.color, 
+                "position": {
+                    "x": module.posX,
+                    "y": module.posY
+                },
+                "dimensions": {
+                    "width": module.sizeX,
+                    "height": module.sizeY
+                }
+            }
+            for module in modules
+        ]
+    }
+    #print(json.dumps(json_data, indent=2))
+    return json.dumps(json_data, indent=2)
+
+
+        
+        
+modules = solve([Transformer_100("asdf"),Transformer_100("asdf"),Transformer_100("asdf"),Transformer_100("asdf"),Transformer_100("asdf")],100,500)
+print(modules[4].posX)
+modules_to_2d(modules,100,500)

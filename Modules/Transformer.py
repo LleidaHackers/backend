@@ -7,8 +7,8 @@ class TransformerBase(BaseModule):
 
 
 class Transformer_100(TransformerBase):
-  def __init__(self, posX, posY):
-    super().__init__("Transformer_100", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 45
     self.price = 1000

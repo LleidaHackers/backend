@@ -10,14 +10,16 @@ class BaseModule:
   sizeX: int
   sizeY: int
   price: int
+  
   # Connection with other modules
   connections: dict 
 
-  def __init__(self, name, posX, posY):
+  def __init__(self, name):
     self.id = random.randint(0, 1000000)  # Random ID for the module
     self.name = name
-    self.posX = posX
-    self.posY = posY
+    self.posX = 0
+    self.posY = 0
+    self.color = "#FF0000"
     self.connections = {
       'input': [],
       'output': []
