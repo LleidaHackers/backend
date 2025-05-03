@@ -1,7 +1,8 @@
-class Network_Rack:
-    def __init__(self):
-        self.id = 10
-        self.name = "Network_Rack_50"
+from module import Module
+class Network_Rack(Module):
+    def __init__(self,name,id):
+        super().__init__(name, id)
+
         self.properties = {
             'inputs': {
                 "Usable_Power": 50,
