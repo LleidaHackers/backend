@@ -6,18 +6,19 @@ def parseTransformer(data):
 
     type = data['id'].split('-')[0]
     new_object = None
+    name = data['data']['label'].split('\n')[0]
     match type:
         case 'transformer_100':
-            new_object = Transformer_100(data['data']['label'])
+            new_object = Transformer_100(name)
         case 'transformer_1000':
-            new_object = Transformer_1000(data['data']['label'])
+            new_object = Transformer_1000(name)
         case 'transformer_5000':
-            new_object = Transformer_5000(data['data']['label'])
+            new_object = Transformer_5000(name)
         case _:
-            raise ValueError(f"This item is not a transformer: {data['data']['label']}")
+            raise ValueError(f"This item is not a transformer: {name}")
     
 
-    return new_object if new_object is not None else f"Something went wrong while parsing the following transformer data: {data['data']['label']}."
+    return new_object if new_object is not None else f"Something went wrong while parsing the following transformer data: {name}."
 
 
 def parseWaterSupply(data):
@@ -27,16 +28,17 @@ def parseWaterSupply(data):
     from Modules.Water_Supply import WaterSupply_100, WaterSupply_500
     type = data['id'].split('-')[0]
     new_object = None
+    name = data['data']['label'].split('\n')[0]
     match type:
         case 'water_supply_100':
-            new_object = WaterSupply_100(data['data']['label'])
+            new_object = WaterSupply_100(name)
         case 'water_supply_500':
-            new_object = WaterSupply_500(data['data']['label'])
+            new_object = WaterSupply_500(name)
         case _:
-            raise ValueError(f"This item is not a water supply: {data['data']['label']}")
+            raise ValueError(f"This item is not a water supply: {name}")
     
 
-    return new_object if new_object is not None else f"Something went wrong while parsing the following water supply data: {data['data']['label']}."
+    return new_object if new_object is not None else f"Something went wrong while parsing the following water supply data: {name}."
 
 
 def parseWaterTreatment(data):
@@ -46,18 +48,19 @@ def parseWaterTreatment(data):
     from Modules.Water_Treatment import WaterTreatment_50, WaterTreatment_250, WaterTreatment_500
     type = data['id'].split('-')[0]
     new_object = None
+    name = data['data']['label'].split('\n')[0]
     match type:
         case 'water_treatment_50':
-            new_object = WaterTreatment_50(data['data']['label'])
+            new_object = WaterTreatment_50(name)
         case 'water_treatment_250':
-            new_object = WaterTreatment_250(data['data']['label'])
+            new_object = WaterTreatment_250(name)
         case 'water_treatment_500':
-            new_object = WaterTreatment_500(data['data']['label'])
+            new_object = WaterTreatment_500(name)
         case _:
-            raise ValueError(f"This item is not a water treatment: {data['data']['label']}")
+            raise ValueError(f"This item is not a water treatment: {name}")
     
 
-    return new_object if new_object is not None else f"Something went wrong while parsing the following water treatment data: {data['data']['label']}."
+    return new_object if new_object is not None else f"Something went wrong while parsing the following water treatment data: {name}."
 
 
 def parseWaterChiller(data):
@@ -67,16 +70,17 @@ def parseWaterChiller(data):
     from Modules.Water_Chiller import WaterChiller_100, WaterChiller_400
     type = data['id'].split('-')[0]
     new_object = None
+    name = data['data']['label'].split('\n')[0]
     match type:
         case 'water_chiller_100':
-            new_object = WaterChiller_100(data['data']['label'])
+            new_object = WaterChiller_100(name)
         case 'water_chiller_400':
-            new_object = WaterChiller_400(data['data']['label'])
+            new_object = WaterChiller_400(name)
         case _:
-            raise ValueError(f"This item is not a water chiller: {data['data']['label']}")
+            raise ValueError(f"This item is not a water chiller: {name}")
     
 
-    return new_object if new_object is not None else f"Something went wrong while parsing the following water chiller data: {data['data']['label']}."
+    return new_object if new_object is not None else f"Something went wrong while parsing the following water chiller data: {name}."
 
 
 def parseNetworkRack(data):
@@ -86,18 +90,19 @@ def parseNetworkRack(data):
     from Modules.Network_Rack import NetworkRack_50, NetworkRack_100, NetworkRack_200
     type = data['id'].split('-')[0]
     new_object = None
+    name = data['data']['label'].split('\n')[0]
     match type:
         case 'network_rack_50':
-            new_object = NetworkRack_50(data['data']['label'])
+            new_object = NetworkRack_50(name)
         case 'network_rack_100':
-            new_object = NetworkRack_100(data['data']['label'])
+            new_object = NetworkRack_100(name)
         case 'network_rack_200':
-            new_object = NetworkRack_200(data['data']['label'])
+            new_object = NetworkRack_200(name)
         case _:
-            raise ValueError(f"This item is not a network rack: {data['data']['label']}")
+            raise ValueError(f"This item is not a network rack: {name}")
     
 
-    return new_object if new_object is not None else f"Something went wrong while parsing the following network rack data: {data['data']['label']}."
+    return new_object if new_object is not None else f"Something went wrong while parsing the following network rack data: {name}."
 
 
 def parseServerRack(data):
@@ -107,18 +112,19 @@ def parseServerRack(data):
     from Modules.Server_Rack import ServerRack_100, ServerRack_200, ServerRack_500
     type = data['id'].split('-')[0]
     new_object = None
+    name = data['data']['label'].split('\n')[0]
     match type:
         case 'server_rack_100':
-            new_object = ServerRack_100(data['data']['label'])
+            new_object = ServerRack_100(name)
         case 'server_rack_200':
-            new_object = ServerRack_200(data['data']['label'])
+            new_object = ServerRack_200(name)
         case 'server_rack_500':
-            new_object = ServerRack_500(data['data']['label'])
+            new_object = ServerRack_500(name)
         case _:
-            raise ValueError(f"This item is not a server rack: {data['data']['label']}")
+            raise ValueError(f"This item is not a server rack: {name}")
     
 
-    return new_object if new_object is not None else f"Something went wrong while parsing the following server rack data: {data['data']['label']}."
+    return new_object if new_object is not None else f"Something went wrong while parsing the following server rack data: {name}."
 
 
 def parseDataRack(data):
@@ -128,18 +134,19 @@ def parseDataRack(data):
     from Modules.Data_Rack import DataRack_100, DataRack_250, DataRack_500
     type = data['id'].split('-')[0]
     new_object = None
+    name = data['data']['label'].split('\n')[0]
     match type:
         case 'data_rack_100':
-            new_object = DataRack_100(data['data']['label'])
+            new_object = DataRack_100(name)
         case 'data_rack_250':
-            new_object = DataRack_250(data['data']['label'])
+            new_object = DataRack_250(name)
         case 'data_rack_500':
-            new_object = DataRack_500(data['data']['label'])
+            new_object = DataRack_500(name)
         case _:
-            raise ValueError(f"This item is not a data rack: {data['data']['label']}")
+            raise ValueError(f"This item is not a data rack: {name}")
     
 
-    return new_object if new_object is not None else f"Something went wrong while parsing the following data rack data: {data['data']['label']}."
+    return new_object if new_object is not None else f"Something went wrong while parsing the following data rack data: {name}."
 
 
 def parseModule(data):
