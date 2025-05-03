@@ -1,14 +1,33 @@
+from dataclasses import dataclass
 from BaseModule import BaseModule
 
-class DataRackBase(BaseModule):
-  # Consumed/Produced resources
-  consumedPower: int
-  consumedCWater: int
-  consumedInternalNet: int
-  producedDWater: int
-  producedDataStorage: int
-  
+@dataclass
+class DataRackInputs:
+    usablePower: int = 0
+    chilledWater: int = 0
+    internalNetwork: int = 0
 
+@dataclass
+class DataRackOutputs:
+    distilledWater: int = 0
+    dataStorage: int = 0
+
+class DataRackBase(BaseModule):
+    def __init__(self, name: str):
+        super().__init__(name)
+        # Resource consumption/production
+        self.consumedPower: int = 0
+        self.consumedCWater: int = 0
+        self.consumedInternalNet: int = 0
+        self.producedDWater: int = 0
+        self.producedDataStorage: int = 0
+        self.color: str = ""
+        
+        # Current state using dataclasses
+        self.current_inputs = DataRackInputs()
+        self.current_outputs = DataRackOutputs()
+        
+        
 class DataRack_100(DataRackBase):
   def __init__(self, name):
     super().__init__(name)
@@ -20,6 +39,7 @@ class DataRack_100(DataRackBase):
     self.consumedInternalNet = 5
     self.producedDWater = 3
     self.producedDataStorage = 100
+    self.color = "f100ff"
     
 
 class DataRack_250(DataRackBase):
@@ -33,6 +53,7 @@ class DataRack_250(DataRackBase):
     self.consumedInternalNet = 10
     self.producedDWater = 3
     self.producedDataStorage = 250
+    self.color = "87358c"
 
 
 class DataRack_500(DataRackBase):
@@ -46,3 +67,4 @@ class DataRack_500(DataRackBase):
     self.consumedInternalNet = 20
     self.producedDWater = 6
     self.producedDataStorage = 500
+    self.color = "5c275f"

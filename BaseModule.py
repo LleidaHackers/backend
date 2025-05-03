@@ -1,4 +1,4 @@
-import random
+from random import randint
 
 class BaseModule:
   id: int
@@ -15,7 +15,7 @@ class BaseModule:
 
 
   def __init__(self, name):
-    self.id = random.randint(0, 1000000)  # Random ID for the module
+    self.id = randint(0, 1000000)  # Random ID for the module
     self.name = name
     self.posX = 0
     self.posY = 0
