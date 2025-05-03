@@ -562,7 +562,7 @@
       "type": "data_rack"
     }
   ],
-  "DataCenters": [
+  "data_center": [
     {
       "name": "Server_Square",
       "icon": "DatabaseZap",
