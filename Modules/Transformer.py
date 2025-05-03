@@ -1,7 +1,7 @@
-class Transformer:
-    def __init__(self):
-        self.id = 1
-        self.name = "Transformer_100"
+from module import Module
+class Transformer(Module):
+    def __init__(self,name,id):
+        super().__init__(name, id)
         self.properties = {
             'inputs': {
                 "Grid_Connection": 1,

@@ -1,9 +1,9 @@
-import Module
+from module import Module
 
 class Data_Rack(Module):
-    def __init__(self):
-        self.id = 16
-        self.name = "Data_Rack_100"
+    def __init__(self, name, id):
+        super().__init__(name, id)
+
         self.properties = {
             'inputs': {
                 "Usable_Power": 15,
@@ -18,12 +18,12 @@ class Data_Rack(Module):
                 "Data_Storage": 100
             }
         }
+
         self.current = {
             'inputs': {
                 "Usable_Power": 0,
                 "Chilled_Water": 0,
                 "Internal_Network": 0,
-    
             },
             'outputs': {
                 "Distilled_Water": 0,
