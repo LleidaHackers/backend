@@ -8,8 +8,8 @@ class WaterTreatmentBase(BaseModule):
 
 
 class WaterTreatment_50(WaterTreatmentBase):
-  def __init__(self, name, posX, posY):
-    super().__init__(name, posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 50
     self.sizeY = 50
     self.price = 10000
@@ -19,8 +19,8 @@ class WaterTreatment_50(WaterTreatmentBase):
 
 
 class WaterTreatment_250(WaterTreatmentBase):
-  def __init__(self, name, posX, posY):
-    super().__init__(name, posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 200
     self.sizeY = 200
     self.price = 40000
@@ -30,8 +30,8 @@ class WaterTreatment_250(WaterTreatmentBase):
 
 
 class WaterTreatment_500(WaterTreatmentBase):
-  def __init__(self, name, posX, posY):
-    super().__init__(name, posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 400
     self.sizeY = 400
     self.price = 70000

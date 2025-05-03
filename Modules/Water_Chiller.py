@@ -8,8 +8,8 @@ class WaterChillerBase(BaseModule):
 
 
 class WaterChiller_100(WaterChillerBase):
-  def __init__(self, name, posX, posY):
-    super().__init__(name, posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 100
     self.sizeY = 100
     self.price = 40000
@@ -19,8 +19,8 @@ class WaterChiller_100(WaterChillerBase):
 
 
 class WaterChiller_400(WaterChillerBase):
-  def __init__(self, name, posX, posY):
-    super().__init__(name, posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 300
     self.sizeY = 100
     self.price = 150000

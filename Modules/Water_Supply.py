@@ -7,8 +7,8 @@ class WaterSupplyBase(BaseModule):
 
 
 class WaterSupply_100(WaterSupplyBase):
-  def __init__(self, name, posX, posY):
-    super().__init__(name, posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 50
     self.sizeY = 50
     self.price = 200
@@ -17,8 +17,8 @@ class WaterSupply_100(WaterSupplyBase):
 
 
 class WaterSupply_500(WaterSupplyBase):
-  def __init__(self, name, posX, posY):
-    super().__init__(name, posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 150
     self.sizeY = 100
     self.price = 400
