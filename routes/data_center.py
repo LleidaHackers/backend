@@ -20,10 +20,8 @@ class ModuleData(RootModel[Any]):
 @router.post("/")
 def create_data_center(data: dict):
     data["status"] = "Active"
-    data["totalBudget"] = data.get("budget", 0)
     space_x = data.get("space_x", 0)
     space_y = data.get("space_y", 0)
-
     data.update({
         "powerConsume": 0,
         "powerRequired": 0,
