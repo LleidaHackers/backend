@@ -1,19 +1,10 @@
-class WaterChillerBase:
-  # Position, may vary
-  posX: int
-  posY: int
-  
-  # Characteristics, stay the same
-  sizeX: int
-  sizeY: int
-  price: int
-  
+from BaseModule import BaseModule
+
+class WaterChillerBase(BaseModule):
   # Consumed/Produced resources
   consumedDWater: int
   consumedPower: int
   producedCWater: int
-  connections: dict
-  # connections be like: {'input':{}}, where each element in dict represents 1 connection to that object
 
 
 class WaterChiller_100(WaterChillerBase):
@@ -26,7 +17,6 @@ class WaterChiller_100(WaterChillerBase):
     self.consumedDWater = 100
     self.consumedPower = 500
     self.producedCWater = 95
-    self.connections = {'input':{}, 'output':{}}
 
 
 class WaterChiller_400(WaterChillerBase):
@@ -39,4 +29,3 @@ class WaterChiller_400(WaterChillerBase):
     self.consumedDWater = 400
     self.consumedPower = 1500
     self.producedCWater = 390
-    self.connections = {'input':{}, 'output':{}}

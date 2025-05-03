@@ -1,19 +1,10 @@
-class WaterTreatmentBase:
-  # Position, may vary
-  posX: int
-  posY: int
-  
-  # Characteristics, stay the same
-  sizeX: int
-  sizeY: int
-  price: int
-  
+from BaseModule import BaseModule
+
+class WaterTreatmentBase(BaseModule):
   # Consumed/Produced resources
   consumedFWater: int
   consumedPower: int
   producedDWater: int
-  connections: dict
-  # connections be like: {'input':{}}, where each element in dict represents 1 connection to that object
 
 
 class WaterTreatment_50(WaterTreatmentBase):
@@ -26,8 +17,6 @@ class WaterTreatment_50(WaterTreatmentBase):
     self.consumedFWater = 50
     self.consumedPower = 50
     self.producedDWater = 50
-    self.connections = {'input':{}, 'output':{}}
-
 
 
 class WaterTreatment_250(WaterTreatmentBase):
@@ -40,8 +29,6 @@ class WaterTreatment_250(WaterTreatmentBase):
     self.consumedFWater = 250
     self.consumedPower = 90
     self.producedDWater = 250
-    self.connections = {'input':{}, 'output':{}}
-
 
 
 class WaterTreatment_500(WaterTreatmentBase):
@@ -54,4 +41,3 @@ class WaterTreatment_500(WaterTreatmentBase):
     self.consumedFWater = 500
     self.consumedPower = 150
     self.producedDWater = 500
-    self.connections = {'input':{}, 'output':{}}

@@ -1,18 +1,9 @@
-class TransformerBase:
-  # Position, may vary
-  posX: int
-  posY: int
-  
-  # Characteristics, stay the same
-  sizeX: int
-  sizeY: int
-  price: int
-  
+from BaseModule import BaseModule
+
+class TransformerBase(BaseModule):
   # Consumed/Produced resources
   consumedGridConn: int
   producedPower: int
-  connections: dict
-  # connections be like: {'input':{}}, where each element in dict represents 1 connection to that object
 
 
 class Transformer_100(TransformerBase):
@@ -24,7 +15,6 @@ class Transformer_100(TransformerBase):
     self.price = 1000
     self.consumedGridConn = 1
     self.producedPower = 100
-    self.connections = {'input':{}, 'output':{}}
 
 
 class Transformer_1000(TransformerBase):
@@ -36,7 +26,6 @@ class Transformer_1000(TransformerBase):
     self.price = 50000
     self.consumedGridConn = 1
     self.producedPower = 1000
-    self.connections = {'input':{}, 'output':{}}
 
 
 class Transformer_5000(TransformerBase):
@@ -48,4 +37,3 @@ class Transformer_5000(TransformerBase):
     self.price = 250000
     self.consumedGridConn = 1
     self.producedPower = 5000
-    self.connections = {'input':{}, 'output':{}}

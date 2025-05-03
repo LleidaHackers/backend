@@ -1,22 +1,13 @@
-class DataRackBase:
-  # Position, may vary
-  posX: int
-  posY: int
-  
-  # Characteristics, stay the same
-  sizeX: int
-  sizeY: int
-  price: int
-  
+from BaseModule import BaseModule
+
+class DataRackBase(BaseModule):
   # Consumed/Produced resources
   consumedPower: int
   consumedCWater: int
   consumedInternalNet: int
   producedDWater: int
   producedDataStorage: int
-  connections: dict
-  # connections be like: {'input':{}}, where each element in dict represents 1 connection to that object
-
+  
 
 class DataRack_100(DataRackBase):
   def __init__(self, posX, posY):
@@ -30,7 +21,7 @@ class DataRack_100(DataRackBase):
     self.consumedInternalNet = 5
     self.producedDWater = 3
     self.producedDataStorage = 100
-    self.connections = {'input':{}}
+    
 
 class DataRack_250(DataRackBase):
   def __init__(self, posX, posY):
@@ -44,7 +35,7 @@ class DataRack_250(DataRackBase):
     self.consumedInternalNet = 10
     self.producedDWater = 3
     self.producedDataStorage = 250
-    self.connections = {'input':{}}
+
 
 class DataRack_500(DataRackBase):
   def __init__(self, posX, posY):
@@ -58,4 +49,3 @@ class DataRack_500(DataRackBase):
     self.consumedInternalNet = 20
     self.producedDWater = 6
     self.producedDataStorage = 500
-    self.connections = {'input':{}}
