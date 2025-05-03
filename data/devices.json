@@ -629,7 +629,7 @@
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
       "inputs": ["Data_Storage", "Processing"],
-      "outputs": ["External_Network, Grid_Connection, Water_Connection"],
+      "outputs": ["External_Network", "Grid_Connection", "Water_Connection"],
       "type": "data_rack"
     },
     {
@@ -660,7 +660,7 @@
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
       "inputs": ["Data_Storage", "Processing"],
-      "outputs": ["Grid_Connection, Water_Connection, Data_Storage"],
+      "outputs": ["Grid_Connection", "Water_Connection", "Data_Storage"],
       "type": "data_rack"
     },
     {
@@ -691,7 +691,7 @@
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
       "inputs": ["Usable_Power"],
-      "outputs": ["Grid_Connection, Water_Connection, Processing"],
+      "outputs": ["Grid_Connection", "Water_Connection", "Processing"],
       "type": "data_rack"
     }
   ]
