@@ -16,13 +16,13 @@ class WaterTreatmentBase:
   # connections be like: {'input':{}}, where each element in dict represents 1 connection to that object
 
 
-class WaterTreatment_100(WaterTreatmentBase):
+class WaterTreatment_50(WaterTreatmentBase):
   def __init__(self, posX, posY):
     self.posX = posX
     self.posY = posY
     self.sizeX = 50
     self.sizeY = 50
-    self.prize = 10000
+    self.price = 10000
     self.consumedFWater = 50
     self.consumedPower = 50
     self.producedDWater = 50
@@ -30,13 +30,13 @@ class WaterTreatment_100(WaterTreatmentBase):
 
 
 
-class WaterTreatment_100(WaterTreatmentBase):
+class WaterTreatment_250(WaterTreatmentBase):
   def __init__(self, posX, posY):
     self.posX = posX
     self.posY = posY
-    self.sizeX = 50
-    self.sizeY = 50
-    self.prize = 10000
+    self.sizeX = 200
+    self.sizeY = 200
+    self.price = 40000
     self.consumedFWater = 250
     self.consumedPower = 90
     self.producedDWater = 250
@@ -48,9 +48,9 @@ class WaterTreatment_500(WaterTreatmentBase):
   def __init__(self, posX, posY):
     self.posX = posX
     self.posY = posY
-    self.sizeX = 50
-    self.sizeY = 50
-    self.prize = 10000
+    self.sizeX = 400
+    self.sizeY = 400
+    self.price = 70000
     self.consumedFWater = 500
     self.consumedPower = 150
     self.producedDWater = 500

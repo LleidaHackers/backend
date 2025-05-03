@@ -21,8 +21,8 @@ class WaterSupply_100(WaterSupplyBase):
     self.posY = posY
     self.sizeX = 50
     self.sizeY = 50
-    self.prize = 200
-    self.producedFWater = 95
+    self.price = 200
+    self.producedFWater = 100
     self.consumedWaterConn = 1
     self.connections = {'input':{}, 'output':{}}
 
@@ -33,7 +33,7 @@ class WaterSupply_100(WaterSupplyBase):
     self.posY = posY
     self.sizeX = 150
     self.sizeY = 100
-    self.prize = 400
+    self.price = 400
     self.producedFWater = 500
     self.consumedWaterConn = 1
     self.connections = {'input':{}, 'output':{}}

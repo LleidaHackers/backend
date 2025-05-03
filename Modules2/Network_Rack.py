@@ -23,7 +23,7 @@ class NetworkRack_50(NetworkRackBase):
     self.posY = posY
     self.sizeX = 40
     self.sizeY = 40
-    self.prize = 2000
+    self.price = 2000
     self.consumedPower = 50
     self.consumedCWater = 5
     self.producedInternalNet = 50
@@ -36,7 +36,7 @@ class NetworkRack_100(NetworkRackBase):
     self.posY = posY
     self.sizeX = 40
     self.sizeY = 40
-    self.prize = 8000
+    self.price = 8000
     self.consumedPower = 75
     self.consumedCWater = 7
     self.producedInternalNet = 100
@@ -49,7 +49,7 @@ class NetworkRack_200(NetworkRackBase):
     self.posY = posY
     self.sizeX = 40
     self.sizeY = 40
-    self.prize = 20000
+    self.price = 20000
     self.consumedPower = 95
     self.consumedCWater = 10
     self.producedInternalNet = 200

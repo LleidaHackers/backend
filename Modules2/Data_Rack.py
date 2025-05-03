@@ -24,7 +24,7 @@ class DataRack_100(DataRackBase):
     self.posY = posY
     self.sizeX = 40
     self.sizeY = 40
-    self.prize = 2000
+    self.price = 2000
     self.consumedPower = 15
     self.consumedCWater = 3
     self.consumedInternalNet = 5
@@ -38,7 +38,7 @@ class DataRack_250(DataRackBase):
     self.posY = posY
     self.sizeX = 40
     self.sizeY = 40
-    self.prize = 7500
+    self.price = 7500
     self.consumedPower = 25
     self.consumedCWater = 3
     self.consumedInternalNet = 10
@@ -52,7 +52,7 @@ class DataRack_500(DataRackBase):
     self.posY = posY
     self.sizeX = 40
     self.sizeY = 40
-    self.prize = 20500
+    self.price = 20500
     self.consumedPower = 40
     self.consumedCWater = 6
     self.consumedInternalNet = 20

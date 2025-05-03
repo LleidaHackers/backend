@@ -1,6 +1,5 @@
-from Modules.Transformer import Transformer
+from Modules2.Transformer import Transformer_100
 
-data_rack = Transformer("Rack01", 1)
-print(data_rack.name)  # prints "Rack01"
-data_rack.posX = 123
-print(data_rack.posX)
+trans = Transformer_100(150, 40)
+print("Coords: ("+str(trans.posX)+", "+str(trans.posY)+")")
+print("Price: " + str(trans.price))
