@@ -8,11 +8,12 @@ class ServerRackBase(BaseModule):
   producedDWater: int
   producedProcessing: int
   producedExternalNet: int
+  color: str
 
 
 class ServerRack_100(ServerRackBase):
-  def __init__(self, posX, posY):
-    super().__init__("ServerRack_100", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 40
     self.price = 8000
@@ -22,11 +23,12 @@ class ServerRack_100(ServerRackBase):
     self.producedDWater = 15
     self.producedProcessing = 100
     self.producedExternalNet = 100
+    self.color = "ff0000"
 
 
 class ServerRack_200(ServerRackBase):
-  def __init__(self, posX, posY):
-    super().__init__("ServerRack_200", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 40
     self.price =  12000
@@ -35,12 +37,13 @@ class ServerRack_200(ServerRackBase):
     self.consumedInternalNet = 18
     self.producedDWater = 25
     self.producedProcessing = 150
-    self.producedExternalNet = 200  
+    self.producedExternalNet = 200
+    self.color = "b70505"
 
 
 class ServerRack_500(ServerRackBase):
-  def __init__(self, posX, posY):
-    super().__init__("ServerRack_500", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 40
     self.price =  50000
@@ -50,3 +53,4 @@ class ServerRack_500(ServerRackBase):
     self.producedDWater = 50
     self.producedProcessing = 1000
     self.producedExternalNet = 400
+    self.color = "8c0101"
