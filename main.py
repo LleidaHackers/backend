@@ -2,7 +2,9 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from routes import modules
+from routes import build
 from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 
@@ -45,3 +47,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(build.router, prefix="", tags=["build simulation"])
+
