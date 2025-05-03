@@ -1,0 +1,39 @@
+{
+    "nodes": [
+      {
+        "id": "transformer_100-1",
+        "type": "custom",
+        "position": {
+          "x": 11.863301667468534,
+          "y": -30.666511803317746
+        },
+        "data": {
+          "label": "Transformer_100\n($1000)",
+          "type": "transformer",
+          "power": 100,
+          "demand": 0,
+          "inputs": [
+            "Grid_Connection"
+          ],
+          "outputs": [
+            "Usable_Power"
+          ]
+        },
+        "style": {
+          "borderRadius": 8,
+          "padding": 8,
+          "backgroundColor": "#ECFDF5",
+          "border": "1px solid #CBD5E1"
+        },
+        "width": 177,
+        "height": 131,
+        "selected": true,
+        "positionAbsolute": {
+          "x": 11.863301667468534,
+          "y": -30.666511803317746
+        },
+        "dragging": false
+      }
+    ],
+    "edges": []
+  }

@@ -13,17 +13,18 @@ def parseTransformer(data):
     Parses the transformer data and returns a Transformer object.
     """
     from Modules.Transformer import Transformer_100, Transformer_1000, Transformer_5000
-    cost = data['cost']
+
+    type = data['id'].split('-')[0]
     new_object = None
-    match cost:
-        case '100':
-            new_object = Transformer_100(data['name'], data['posX'], data['posY'])
-        case '1000':
-            new_object = Transformer_1000(data['name'], data['posX'], data['posY'])
-        case '5000':
-            new_object = Transformer_5000(data['name'], data['posX'], data['posY'])
+    match type:
+        case 'transformer_100':
+            new_object = Transformer_100(data['data']['label'])
+        case 'transformer_1000':
+            new_object = Transformer_1000(data['data']['label'])
+        case 'transformer_5000':
+            new_object = Transformer_5000(data['data']['label'])
         case _:
-            raise ValueError(f"This item is not a transformer: {data['name']}")
+            raise ValueError(f"This item is not a transformer: {data['data']['label']}")
     
 
     return new_object if new_object is not None else f"Something went wrong while parsing the following transformer data: {data['name']}."
@@ -163,21 +164,11 @@ def parseModule(data):
     from Modules.Server_Rack import ServerRack_100, ServerRack_200, ServerRack_500
     from Modules.Data_Rack import DataRack_100, DataRack_250, DataRack_500
 
-    module_type = data['type']
+    module_type = data['data']['type']
     match module_type:
         case 'transformer':
             return parseTransformer(data)
-        case 'water_supply':
+        case 'wattersupply':
             return parseWaterSupply(data)
-        case 'water_treatment':
-            return parseWaterTreatment(data)
-        case 'water_chiller':
-            return parseWaterChiller(data)
-        case 'network_rack':
-            return parseNetworkRack(data)
-        case 'server_rack':
-            return parseServerRack(data)
-        case 'data_rack':
-            return parseDataRack(data)
         case _:
             raise ValueError(f"Unknown module type: {module_type}")
