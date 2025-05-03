@@ -1,3 +1,4 @@
+import time
 from Modules.Transformer import Transformer_100, Transformer_1000, Transformer_5000
 from Modules.Water_Supply import WaterSupply_100, WaterSupply_500
 from Modules.Water_Treatment import WaterTreatment_50, WaterTreatment_250, WaterTreatment_500
@@ -91,3 +92,11 @@ print("Data Rack 500:")
 print(f"Size: {data_rack_500.sizeX}x{data_rack_500.sizeY}, Price: {data_rack_500.price}, Consumed Power: {data_rack_500.consumedPower}, Consumed Chilled Water: {data_rack_500.consumedCWater}, Consumed Internal Network: {data_rack_500.consumedInternalNet}, Produced Distilled Water: {data_rack_500.producedDWater}, Produced Processing: {data_rack_500.producedDataStorage}")
 print()
 print("All modules have been created and their details have been printed.")
+
+transformer_100.start()
+try:
+    time.sleep(5)  # Let them run for 5 seconds
+finally:
+    transformer_100.stop()
+
+    print("Transformers stopped.")
