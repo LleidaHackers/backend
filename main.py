@@ -6,7 +6,7 @@ from Modules.Water_Chiller import WaterChiller_100, WaterChiller_400
 from Modules.Network_Rack import NetworkRack_50, NetworkRack_100, NetworkRack_200
 from Modules.Server_Rack import ServerRack_100, ServerRack_200, ServerRack_500
 from Modules.Data_Rack import DataRack_100, DataRack_250, DataRack_500
-
+from Connection import Connection
 # Create an instance of each module
 transformer_100 = Transformer_100("1")
 transformer_1000 = Transformer_1000("2")
@@ -93,10 +93,14 @@ print(f"Size: {data_rack_500.sizeX}x{data_rack_500.sizeY}, Price: {data_rack_500
 print()
 print("All modules have been created and their details have been printed.")
 
+print(transformer_100.id)
+network_rack_50.conn_inputs.append(Connection("usablePower",transformer_100.id))
+
 transformer_100.start()
+network_rack_50.start()
 try:
     time.sleep(5)  # Let them run for 5 seconds
 finally:
     transformer_100.stop()
-
+    network_rack_50.stop()
     print("Transformers stopped.")
