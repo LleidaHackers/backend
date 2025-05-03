@@ -8,7 +8,7 @@ class Module:
             "inputs": [],
             "outputs": []
         }
-  
+   
     def add_input_connection(self, connection):
         self.conns["inputs"].append(connection)
     
