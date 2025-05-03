@@ -143,7 +143,7 @@ def parseDataRack(data):
         case 'data_rack_500':
             new_object = DataRack_500(name)
         case _:
-            raise ValueError(f"This item is not a data rack: {name}")
+            pass  # Proves del fastapi, bd plena de merda i nulls.
     
 
     return new_object if new_object is not None else f"Something went wrong while parsing the following data rack data: {name}."
