@@ -10,8 +10,8 @@ class DataRackBase(BaseModule):
   
 
 class DataRack_100(DataRackBase):
-  def __init__(self, posX, posY):
-    super().__init__("DataRack_100", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 40
     self.price = 2000
@@ -23,8 +23,8 @@ class DataRack_100(DataRackBase):
     
 
 class DataRack_250(DataRackBase):
-  def __init__(self, posX, posY):
-    super().__init__("DataRack_250", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 40
     self.price = 7500
@@ -36,8 +36,8 @@ class DataRack_250(DataRackBase):
 
 
 class DataRack_500(DataRackBase):
-  def __init__(self, posX, posY):
-    super().__init__("DataRack_500", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 40
     self.price = 20500

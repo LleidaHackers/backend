@@ -9,8 +9,8 @@ class NetworkRackBase(BaseModule):
 
 
 class NetworkRack_50(NetworkRackBase):
-  def __init__(self, posX, posY):
-    super().__init__("NetworkRack_50", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 40
     self.price = 2000
@@ -21,8 +21,8 @@ class NetworkRack_50(NetworkRackBase):
     
 
 class NetworkRack_100(NetworkRackBase):
-  def __init__(self, posX, posY):
-    super().__init__("NetworkRack_100", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 40
     self.price = 8000
@@ -33,8 +33,8 @@ class NetworkRack_100(NetworkRackBase):
     
 
 class NetworkRack_200(NetworkRackBase):
-  def __init__(self, posX, posY):
-    super().__init__("NetworkRack_200", posX, posY)
+  def __init__(self, name):
+    super().__init__(name)
     self.sizeX = 40
     self.sizeY = 40
     self.price = 20000

@@ -74,3 +74,14 @@ def get_workflow_by_id(id: int):
 def get_all_workflows():
     workflows = list(workflow_collection.find())
     return {"status": "success", "workflows": str(workflows)}
+@router.post("/create-data-center")
+def create_data_center(data: str):
+    # Aquí puedes guardar el centro de datos en la base de datos
+    # Por simplicidad, lo guardamos en una colección de MongoDB
+    o = utils
+    datcenter_collection.insert_one({"data": o.__dict__()})
+    return {"status": "success", "data": data}
+@router.get("/data-center")
+def get_data_center():
+    data_center = list(datcenter_collection.find())
+    return {"status": "success", "data_center": str(data_center)}

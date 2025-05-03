@@ -4,7 +4,6 @@ from fastapi.responses import RedirectResponse
 from routes import modules
 from fastapi.middleware.cors import CORSMiddleware
 
-
 app = FastAPI()
 
 @app.get("/")
