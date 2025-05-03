@@ -21,6 +21,8 @@ class ModuleData(RootModel[Any]):
 def create_data_center(data: dict):
     data["status"] = "Active"
     data["budget"] = data.get("totalBudget", 0)
+    data["latituid"] = data.get("latituid", "")
+    data["longitud"] = data.get("longitud", "")
     space_x = data.get("space_x", 0)
     space_y = data.get("space_y", 0)
     data.update({

@@ -3,6 +3,7 @@ from weather_api import get_weather
 
 router = APIRouter()
 
-@router.get("/weather/{latitude}/{longitude}")
-def get_weather(latitude: float, longitude: float):
-    return get_weather(latitude, longitude)
+@router.get("/{latitude}/{longitude}")
+def get_weather_from_coords(latitude: float, longitude: float):
+    weather_data= get_weather(latitude, longitude)
+    return weather_data
