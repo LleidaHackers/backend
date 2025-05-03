@@ -185,7 +185,7 @@
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
       "inputs": ["Fresh_Water", "Usable_Power"],
-      "outputs": ["Distlled_Water"],
+      "outputs": ["Distilled_Water"],
       "type": "water_treatment"
     },
     {
@@ -216,7 +216,7 @@
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
       "inputs": ["Fresh_Water", "Usable_Power"],
-      "outputs": ["Distlled_Water"],
+      "outputs": ["Distilled_Water"],
       "type": "water_treatment"
     },
     {
@@ -247,7 +247,7 @@
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
       "inputs": ["Fresh_Water", "Usable_Power"],
-      "outputs": ["Distlled_Water"],
+      "outputs": ["Distilled_Water"],
       "type": "water_treatment"
     }
   ],
@@ -279,7 +279,7 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Distlled_Water", "Usable_Power"],
+      "inputs": ["Distilled_Water", "Usable_Power"],
       "outputs": ["Chilled_Water"],
       "type": "water_chiller"
     },
@@ -310,7 +310,7 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Distlled_Water", "Usable_Power"],
+      "inputs": ["Distilled_Water", "Usable_Power"],
       "outputs": ["Chilled_Water"],
       "type": "water_chiller"
     }
