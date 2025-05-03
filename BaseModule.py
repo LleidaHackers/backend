@@ -1,6 +1,9 @@
+from dataclasses import dataclass
 import random
 import time
+from typing import List
 from paho.mqtt import client as mqtt_client
+from Connection import Connection
 
 
 class BaseModule:
@@ -25,12 +28,11 @@ class BaseModule:
     self.id = random.randint(0, 1000000)  # Random ID for the module
     self.name = name
     self.posX = 0
-    self.posY = 0
+    self.posY = 0 
     self.client_id = f'publish-{random.randint(0, 1000)}'
-    self.connections = {
-      'input': [],
-      'output': []
-    }
+    self.conn_inputs : List[Connection]= []
+    self.conn_outputs : List[Connection]= [] 
+
 
   def connect_mqtt(self):
     def on_connect(client, userdata, flags, rc):
@@ -52,7 +54,7 @@ class BaseModule:
     print(error)
     return client
   
-  def subscribe(client: mqtt_client,topic):
+  def subscribe(self,client: mqtt_client,topic):
     def on_message(client, userdata, msg):
         print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
 

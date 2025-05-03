@@ -33,8 +33,8 @@ class TransformerBase(BaseModule, Thread):
         self.running = True
         client = self.connect_mqtt()
         client.loop_start()
-        self.publish(client,"/test/topic")
-        self.subscribe(client,"/test/topic")
+
+        self.publish(client,f"/transformer/{self.id}")
         """"        while self.running:
             self.current_outputs.usablePower = self.generate()
             print(f"[{self.name}] Power Output: {self.current_outputs.usablePower:.2f} kW")
