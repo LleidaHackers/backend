@@ -5,10 +5,6 @@ if __name__ == "__main__":
     parsedObjects = []
     with open("data.json", "r") as file:
         data = json.load(file)
-        nodes = data['nodes']
-        for node in nodes:
-            parsedObjects.append(parseModule(node))
-    for obj in parsedObjects:
-        print("Printing object: ")
-        print(obj)
-
+        for node in data:
+            parsedObjects.append(parseModule(node.get('nodes')[0]))
+        print(parsedObjects)

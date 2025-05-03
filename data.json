@@ -1,39 +1,155 @@
-{
-    "nodes": [
-      {
-        "id": "transformer_100-1",
-        "type": "custom",
-        "position": {
-          "x": 11.863301667468534,
-          "y": -30.666511803317746
-        },
-        "data": {
-          "label": "Transformer_100\n($1000)",
-          "type": "transformer",
-          "power": 100,
-          "demand": 0,
-          "inputs": [
-            "Grid_Connection"
-          ],
-          "outputs": [
-            "Usable_Power"
-          ]
-        },
-        "style": {
-          "borderRadius": 8,
-          "padding": 8,
-          "backgroundColor": "#ECFDF5",
-          "border": "1px solid #CBD5E1"
-        },
-        "width": 177,
-        "height": 131,
-        "selected": true,
-        "positionAbsolute": {
-          "x": 11.863301667468534,
-          "y": -30.666511803317746
-        },
-        "dragging": false
-      }
-    ],
-    "edges": []
-  }
+[
+    {
+        "id": "6816322631ce9c56c4cac9521",
+        "nodes": [
+        {
+            "id": "transformer_100-1",
+            "type": "custom",
+            "position": {
+                "x": 11.863301667468534,
+                "y": -30.666511803317746
+            },
+            "data": {
+                "label": "Transformer_100\n($1000)",
+                "type": "transformer",
+                "power": 100,
+                "demand": 0,
+                "inputs": [
+                    "Grid_Connection"
+                ],
+                "outputs": [
+                    "Usable_Power"
+                ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#ECFDF5",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131,
+            "selected": true,
+            "positionAbsolute": {
+                "x": 11.863301667468534,
+                "y": -30.666511803317746
+            },
+            "dragging": false
+        }],
+        "edges": []
+    },
+    {
+        "id": "6816322631cwpc56c4cac9521",
+        "nodes": [
+        {
+            "id": "transformer_100-2",
+            "type": "custom",
+            "position": {
+                "x": 211.863301667468534,
+                "y": -30.666511803317746
+            },
+            "data": {
+                "label": "Transformer_100\n($1000)",
+                "type": "transformer",
+                "power": 100,
+                "demand": 0,
+                "inputs": [
+                    "Grid_Connection"
+                ],
+                "outputs": [
+                    "Usable_Power"
+                ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#ECFDF5",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131,
+            "selected": true,
+            "positionAbsolute": {
+                "x": 11.863301667468534,
+                "y": -30.666511803317746
+            },
+            "dragging": false
+        }],
+        "edges": []
+    },
+    {
+        "id": "6816322631ce9c56c4cac954",
+        "nodes": [
+        {
+            "id": "water_treatment_50-1",
+            "type": "custom",
+            "position": {
+                "x": 374.78841400387444,
+                "y": -6.1927258540686125
+            },
+            "data": {
+            "label": "Water_Treatment_50\n($10000)",
+            "type": "water_treatment",
+            "power": 0,
+            "demand": 50,
+            "inputs": [
+                "Fresh_Water",
+                "Usable_Power"
+            ],
+            "outputs": [
+                "Distlled_Water"
+            ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#FEF3C7",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 193,
+            "height": 131,
+            "selected": true,
+            "positionAbsolute": {
+                "x": 374.78841400387444,
+                "y": -6.1927258540686125
+            },
+            "dragging": false
+        }
+        ],
+        "edges": []
+    },
+    {
+        "id": "6816322631ce9c56c4cac954",
+        "nodes": [
+        {
+            "id": "network_rack_50-1",
+            "type": "custom",
+            "position": {
+                "x": 416.04838466080605,
+                "y": 33.86019879335813
+            },
+            "data": {
+                "label": "Network_Rack_50\n($2000)",
+                "type": "network_rack",
+                "power": 0,
+                "demand": 50,
+                "inputs": [
+                    "Usable_Power"
+                ],
+                "outputs": [
+                    "Internal_Network"
+                ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#FEF3C7",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+        }
+        ],
+        "edges": []
+    }
+]
