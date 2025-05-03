@@ -1,7 +1,7 @@
-class Water_Supply:
-    def __init__(self):
-        self.id = 4
-        self.name = "Water_Supply_100"
+from module import Module
+class Water_Supply(Module):
+    def __init__(self,name,id):
+        super().__init__(name, id)
         self.properties = {
             'inputs': {
                 "Water_Connection": 1,

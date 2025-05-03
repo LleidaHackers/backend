@@ -1,7 +1,7 @@
-class Server_Rack:
-    def __init__(self):
-        self.id = 13
-        self.name = "Server_Rack_100"
+from module import Module
+class Server_Rack(Moudle):
+    def __init__(self,name,id):
+        super().__init__(name, id)
         self.properties = {
             'inputs': {
                 "Usable_Power": 75,

@@ -1,7 +1,7 @@
-class Water_Chiller:
-    def __init__(self):
-        self.id = 8
-        self.name = "Water_Chiller_100"
+from module import Module
+class Water_Chiller(Module):
+    def __init__(self,name,id):
+        super().__init__(name, id)
         self.properties = {
             'inputs': {
                 "Distlled_Water": 100,
