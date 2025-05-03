@@ -172,3 +172,15 @@ def parseModule(data):
             return parseDataRack(data)
         case _:
             raise ValueError(f"Unknown module type: {module_type}")
+        
+
+def parseConnections(data):
+    """
+    Parses the connections data and returns a list of connections.
+    """
+    connections = []
+    for connection in data:
+        source = connection['source']
+        target = connection['target']
+        connections.append((source, target))
+    return connections
