@@ -16,7 +16,7 @@ def parseTransformer(data):
             new_object = Transformer_5000(name)
         case _:
             raise ValueError(f"This item is not a transformer: {name}")
-    
+    new_object.id = data['id']
 
     return new_object if new_object is not None else f"Something went wrong while parsing the following transformer data: {name}."
 
@@ -36,7 +36,7 @@ def parseWaterSupply(data):
             new_object = WaterSupply_500(name)
         case _:
             raise ValueError(f"This item is not a water supply: {name}")
-    
+    new_object.id = data['id']
 
     return new_object if new_object is not None else f"Something went wrong while parsing the following water supply data: {name}."
 
@@ -58,7 +58,7 @@ def parseWaterTreatment(data):
             new_object = WaterTreatment_500(name)
         case _:
             raise ValueError(f"This item is not a water treatment: {name}")
-    
+    new_object.id = data['id']
 
     return new_object if new_object is not None else f"Something went wrong while parsing the following water treatment data: {name}."
 
@@ -78,7 +78,7 @@ def parseWaterChiller(data):
             new_object = WaterChiller_400(name)
         case _:
             raise ValueError(f"This item is not a water chiller: {name}")
-    
+    new_object.id = data['id']
 
     return new_object if new_object is not None else f"Something went wrong while parsing the following water chiller data: {name}."
 
@@ -100,7 +100,7 @@ def parseNetworkRack(data):
             new_object = NetworkRack_200(name)
         case _:
             raise ValueError(f"This item is not a network rack: {name}")
-    
+    new_object.id = data['id']
 
     return new_object if new_object is not None else f"Something went wrong while parsing the following network rack data: {name}."
 
@@ -122,7 +122,7 @@ def parseServerRack(data):
             new_object = ServerRack_500(name)
         case _:
             raise ValueError(f"This item is not a server rack: {name}")
-    
+    new_object.id = data['id']
 
     return new_object if new_object is not None else f"Something went wrong while parsing the following server rack data: {name}."
 
@@ -145,7 +145,6 @@ def parseDataRack(data):
         case _:
             pass  # Proves del fastapi, bd plena de merda i nulls.
     
-
     return new_object if new_object is not None else f"Something went wrong while parsing the following data rack data: {name}."
 
 

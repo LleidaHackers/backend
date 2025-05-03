@@ -1,4 +1,5 @@
-{
+[
+  {
   "id": "68164c4963097215bf3bde6f",
   "nodes": [
     {
@@ -131,4 +132,5 @@
       "id": "reactflow__edge-transformer_100-3Usable_Power-out-network_rack_50-3Usable_Power-in"
     }
   ]
-}
+  }
+]
