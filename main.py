@@ -1,9 +1,52 @@
-import json
-from utils import parseModule
 
-if __name__ == "__main__":
-    parsedObjects = []
-    with open("data.json", "r") as file:
-        data = json.load(file)
-        for node in data:
-            parsedObjects.append(parseModule(node.get('nodes')[0]))
+from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
+from routes import modules
+from routes import build
+from fastapi.middleware.cors import CORSMiddleware
+
+
+app = FastAPI()
+
+@app.get("/")
+def redirect_to_docs():
+    return RedirectResponse(url="/docs")
+
+@app.get("/tet")
+def test():
+    return {
+        "source": [
+            {
+                "name": "Solar Panel",
+                "icon": "Sun",
+                "specs": ["Output: 20W", "Type: Renewable"],
+                "cost": 2000,
+            },
+        ],
+        "sink": [
+            {
+                "name": "Server",
+                "icon": "Server",
+                "specs": ["Consumption: 10W", "Critical Load"],
+                "cost": 1500,
+            },
+            {
+                "name": "Cooler",
+                "icon": "Snowflake",
+                "specs": ["Consumption: 5W", "Thermal Control"],
+                "cost": 1000,
+            },
+        ],
+    }
+
+app.include_router(modules.router, prefix="/modules", tags=["modules"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins='*',
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(build.router, prefix="", tags=["build simulation"])
+
