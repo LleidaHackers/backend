@@ -14,6 +14,15 @@ services:
       interval: 30s
       timeout: 30s
       retries: 3
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"  # MQTT default port
+      - "9001:9001"  # Websocket port (optional)
 
+    environment:
+      - TZ=UTC  # Set your timezone if needed
 volumes:
   mongodb_data:
