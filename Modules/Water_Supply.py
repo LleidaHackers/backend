@@ -1,23 +1,26 @@
-class Water_Supply:
-    def __init__(self):
-        self.id = 4
-        self.name = "Water_Supply_100"
-        self.properties = {
-            'inputs': {
-                "Water_Connection": 1,
-                "Space_X": 50,
-                "Space_Y": 50,
-                "Price": 200
-            },
-            'outputs': {
-                "Fresh_Water": 100
-            }
-        }
-        self.current = {
-            'inputs': {
-                "Water_Connection": 0,
-            },
-            'outputs': {
-                "Fresh_Water": 0
-            }
-        }
+from BaseModule import BaseModule
+
+class WaterSupplyBase(BaseModule):
+  # Consumed/Produced resources
+  consumedWaterConn: int
+  producedFWater: int
+
+
+class WaterSupply_100(WaterSupplyBase):
+  def __init__(self, posX, posY):
+    super().__init__("WaterSupply_100", posX, posY)
+    self.sizeX = 50
+    self.sizeY = 50
+    self.price = 200
+    self.producedFWater = 100
+    self.consumedWaterConn = 1
+
+
+class WaterSupply_500(WaterSupplyBase):
+  def __init__(self, posX, posY):
+    super().__init__("WaterSupply_500", posX, posY)
+    self.sizeX = 150
+    self.sizeY = 100
+    self.price = 400
+    self.producedFWater = 500
+    self.consumedWaterConn = 1

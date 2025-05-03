@@ -1,26 +1,40 @@
+from BaseModule import BaseModule
 
-class Water_Treatment:
-    def __init__(self):
-        self.id = 5
-        self.name = "Water_Treatment_50"
-        self.properties = {
-            'inputs': {
-                "Fresh_Water": 50,
-                "Usable_Power": 50,
-                "Space_X": 50,
-                "Space_Y": 50,
-                "Price": 10000
-            },
-            'outputs': {
-                "Distlled_Water": 50
-            }
-        }
-        self.current = {
-            'inputs': {
-                "Fresh_Water": 0,
-                "Usable_Power": 0,
-            },
-            'outputs': {
-                "Distlled_Water": 0
-            }
-        }
+class WaterTreatmentBase(BaseModule):
+  # Consumed/Produced resources
+  consumedFWater: int
+  consumedPower: int
+  producedDWater: int
+
+
+class WaterTreatment_50(WaterTreatmentBase):
+  def __init__(self, posX, posY):
+    super().__init__("WaterTreatment_50", posX, posY)
+    self.sizeX = 50
+    self.sizeY = 50
+    self.price = 10000
+    self.consumedFWater = 50
+    self.consumedPower = 50
+    self.producedDWater = 50
+
+
+class WaterTreatment_250(WaterTreatmentBase):
+  def __init__(self, posX, posY):
+    super().__init__("WaterSupply_100", posX, posY)
+    self.sizeX = 200
+    self.sizeY = 200
+    self.price = 40000
+    self.consumedFWater = 250
+    self.consumedPower = 90
+    self.producedDWater = 250
+
+
+class WaterTreatment_500(WaterTreatmentBase):
+  def __init__(self, posX, posY):
+    super().__init__("WaterSupply_100", posX, posY)
+    self.sizeX = 400
+    self.sizeY = 400
+    self.price = 70000
+    self.consumedFWater = 500
+    self.consumedPower = 150
+    self.producedDWater = 500
