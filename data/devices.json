@@ -343,8 +343,8 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power, Chilled_Water"],
-      "outputs": ["Internal_Network, Fresh_Water"],
+      "inputs": ["Usable_Power", "Chilled_Water"],
+      "outputs": ["Internal_Network", "Fresh_Water"],
       "type": "network_rack"
     }, 
     {
@@ -374,8 +374,8 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power, Chilled_Water"],
-      "outputs": ["Internal_Network, Fresh_Water"],
+      "inputs": ["Usable_Power", "Chilled_Water"],
+      "outputs": ["Internal_Network", "Fresh_Water"],
       "type": "network_rack"
     }
     ,{
@@ -405,8 +405,8 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power, Chilled_Water"],
-      "outputs": ["Internal_Network, Fresh_Water"],
+      "inputs": ["Usable_Power", "Chilled_Water"],
+      "outputs": ["Internal_Network", "Fresh_Water"],
       "type": "network_rack"
     }
   ],
@@ -438,8 +438,8 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power, Chilled_Water, Internal_Network"],
-      "outputs": ["External_Network, Processing"],
+      "inputs": ["Usable_Power", "Chilled_Water", "Internal_Network"],
+      "outputs": ["External_Network", "Processing"],
       "type": "server_rack"
     },
     {
@@ -469,8 +469,8 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power, Chilled_Water, Internal_Network"],
-      "outputs": ["External_Network, Processing"],
+      "inputs": ["Usable_Power", "Chilled_Water", "Internal_Network"],
+      "outputs": ["External_Network", "Processing"],
       "type": "server_rack"
     },
     {
@@ -500,8 +500,8 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power, Chilled_Water, Internal_Network"],
-      "outputs": ["External_Network, Processing"],
+      "inputs": ["Usable_Power", "Chilled_Water", "Internal_Network"],
+      "outputs": ["External_Network", "Processing"],
       "type": "server_rack"
     }
   ],
@@ -630,7 +630,7 @@
       "waterConnectionUsage": 0,
       "inputs": ["Data_Storage", "Processing"],
       "outputs": ["External_Network", "Grid_Connection", "Water_Connection"],
-      "type": "data_rack"
+      "type": "data_center"
     },
     {
       "name": "Dense_Storage",
@@ -660,8 +660,8 @@
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
       "inputs": ["Data_Storage", "Processing"],
-      "outputs": ["Grid_Connection", "Water_Connection", "Data_Storage"],
-      "type": "data_rack"
+      "outputs": ["Grid_Connection", "Water_Connection" , "Data_Storage"],
+      "type": "data_center"
     },
     {
       "name": "Supercomputer",
@@ -692,7 +692,7 @@
       "waterConnectionUsage": 0,
       "inputs": ["Usable_Power"],
       "outputs": ["Grid_Connection", "Water_Connection", "Processing"],
-      "type": "data_rack"
+      "type": "data_center"
     }
   ]
 }
