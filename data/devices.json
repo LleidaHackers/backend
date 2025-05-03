@@ -533,8 +533,8 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power"],
-      "outputs": ["Internal_Network"],
+      "inputs": ["Usable_Power", "Chilled_Water", "Internal_Network"],
+      "outputs": ["External_Network"],
       "type": "data_rack"
     },
     {
@@ -564,8 +564,8 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power"],
-      "outputs": ["Internal_Network"],
+      "inputs": ["Usable_Power", "Chilled_Water", "Internal_Network"],
+      "outputs": ["External_Network"],
       "type": "data_rack"
     },
     {
@@ -595,8 +595,8 @@
       "waterConnectionOffer": 0,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power"],
-      "outputs": ["Internal_Network"],
+      "inputs": ["Usable_Power", "Chilled_Water", "Internal_Network"],
+      "outputs": ["External_Network"],
       "type": "data_rack"
     }
   ],
@@ -628,8 +628,8 @@
       "waterConnectionOffer": 1,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Data_Storage", "Processing"],
-      "outputs": ["External_Network", "Grid_Connection", "Water_Connection"],
+      "inputs": ["Data_Storage", "External_Network", "Processing"],
+      "outputs": [ "Grid_Connection", "Water_Connection"],
       "type": "data_center"
     },
     {
@@ -660,7 +660,7 @@
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
       "inputs": ["Data_Storage", "Processing"],
-      "outputs": ["Grid_Connection", "Water_Connection" , "Data_Storage"],
+      "outputs": ["Grid_Connection", "Water_Connection"],
       "type": "data_center"
     },
     {
@@ -690,8 +690,8 @@
       "waterConnectionOffer": 1000,
       "gridConnectionUsage": 0,
       "waterConnectionUsage": 0,
-      "inputs": ["Usable_Power"],
-      "outputs": ["Grid_Connection", "Water_Connection", "Processing"],
+      "inputs": ["Usable_Power", "Processing"],
+      "outputs": ["Grid_Connection", "Water_Connection"],
       "type": "data_center"
     }
   ]
