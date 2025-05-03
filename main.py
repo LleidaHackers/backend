@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from routes import modules
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 
@@ -36,3 +38,10 @@ def test():
     }
 
 app.include_router(modules.router, prefix="/modules", tags=["modules"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins='*',
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
