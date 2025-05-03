@@ -29,39 +29,26 @@ class NetworkRackBase(BaseModule, Thread):
         self.current_inputs = NetworkRackInputs()
         self.current_outputs = NetworkRackOutputs()
         
-    def generate(self) -> float:
-        """Simulate one second of power output with ±5% variation."""
-        error = random.uniform(-0.05, 0.05)
-        output = self.producedPower * (1 + error)
-        self.current_outputs.usablePower = int(output)
-        return output
+
     
     def run(self):
         """Start background simulation loop."""
         self.running = True
         client = self.connect_mqtt()
         client.loop_start()
+        #print(self.conn_inputs)
         for connection in self.conn_inputs:
-          print(f"/{connection.type}/{connection.id}")
+          print(f"cons /{connection.type}/{connection.id}")
           self.subscribe(client,f"/{connection.type}/{connection.id}")
-          
-        msg_count =0
-        while True:
+    
+        while self.running:
             time.sleep(1)
-            msg_count += 1
-            if msg_count > 5:
-                break
-        #self.publish(client,f"/NetworkRack/{self.id}")
-        """"        while self.running:
-            self.current_outputs.usablePower = self.generate()
-            print(f"[{self.name}] Power Output: {self.current_outputs.usablePower:.2f} kW")
-            time.sleep(1)
-            self.publish(client,"/test/topic")"""
             
         client.loop_stop()
 
     def stop(self):
         """Stop the simulation thread."""
+        
         self.running = False
         
     def subscribe(self, client: mqtt_client, topic):
@@ -69,6 +56,7 @@ class NetworkRackBase(BaseModule, Thread):
       super().subscribe(client, topic)
       def child_on_message(client, userdata, msg):
           print(f"Enhanced message handling: {msg.payload.decode()}")
+          
       client.on_message = child_on_message
         
 class NetworkRack_50(NetworkRackBase):

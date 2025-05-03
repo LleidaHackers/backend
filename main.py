@@ -94,10 +94,13 @@ print()
 print("All modules have been created and their details have been printed.")
 
 print(transformer_100.id)
-network_rack_50.conn_inputs.append(Connection("usablePower",transformer_100.id))
-
+#network_rack_50.conn_inputs.append(Connection("usablePower",transformer_100.id))
+water_chiller_100.conn_inputs.append(Connection("distilledWater",water_supply_500.id))
+water_chiller_100.conn_inputs.append(Connection("usablePower",transformer_100.id))
+water_chiller_100.start()
+water_supply_500.start()
 transformer_100.start()
-network_rack_50.start()
+#network_rack_50.start()
 try:
     time.sleep(5)  # Let them run for 5 seconds
 finally:

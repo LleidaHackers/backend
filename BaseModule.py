@@ -6,7 +6,7 @@ from paho.mqtt import client as mqtt_client
 from Connection import Connection
 
 
-class BaseModule:
+class BaseModule():
   broker = 'localhost'
   port = 1883
   # Generate a Client ID with the publish prefix.
@@ -32,7 +32,7 @@ class BaseModule:
     self.client_id = f'publish-{random.randint(0, 1000)}'
     self.conn_inputs : List[Connection]= []
     self.conn_outputs : List[Connection]= [] 
-
+    self.current_outputs : dict
 
   def connect_mqtt(self):
     def on_connect(client, userdata, flags, rc):
@@ -57,19 +57,31 @@ class BaseModule:
   def subscribe(self,client: mqtt_client,topic):
     def on_message(client, userdata, msg):
         print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
-
+        
     client.subscribe(topic)
     client.on_message = on_message
     #client.on_message = on_message
-  def publish(self,client,topic,msg):
+  
+  def subscribe_child(self, client: mqtt_client, topic, in_out_map):
+    # First call parent's implementation
+      self.subscribe(client, topic)
+      def child_on_message(client, userdata, msg):
+          print(f"[Chiller]Recieved: {msg.payload.decode()} from {msg.topic}")
+          print(str(topic).split("/")[1])
+          self.current_outputs[in_out_map(str(topic).split("/")[1])] = msg.payload.decode()
+          
+          #print(f"aaaaa {self.current_outputs[in_out_map(str(topic).split("/")[1])]}")
+      client.on_message = child_on_message    
+  
+  
+  def publish(self,client,topic,msg,name=""):
       result = client.publish(topic, msg)
       # result: [0, 1]
       status = result[0]
       if status == 0:
-          print(f"Send `{msg}` to topic `{topic}`")
+          print(f"Send `{msg}` to topic `{topic}`, {name}")
       else:
           print(f"Failed to send message to topic {topic}")
-
 
   def setInput(self, other_object_id):
     if other_object_id in self.connections['input']:
