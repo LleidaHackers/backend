@@ -18,3 +18,4 @@ if __name__ == "__main__":
 
         for obj in parsedObjects:
             print(f"ID: {obj.id}, Name: {obj.name}, Connected In: {obj.connectedIn}, Connected Out: {obj.connectedOut}")
+
