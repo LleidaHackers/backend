@@ -5,6 +5,7 @@ class WaterChillerBase(BaseModule):
   consumedDWater: int
   consumedPower: int
   producedCWater: int
+  color: str
 
 
 class WaterChiller_100(WaterChillerBase):
@@ -16,6 +17,7 @@ class WaterChiller_100(WaterChillerBase):
     self.consumedDWater = 100
     self.consumedPower = 500
     self.producedCWater = 95
+    self.color = "00fff2"
 
 
 class WaterChiller_400(WaterChillerBase):
@@ -27,3 +29,4 @@ class WaterChiller_400(WaterChillerBase):
     self.consumedDWater = 400
     self.consumedPower = 1500
     self.producedCWater = 390
+    self.color = "089b94"

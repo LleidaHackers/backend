@@ -6,6 +6,7 @@ class NetworkRackBase(BaseModule):
   consumedCWater: int
   producedFWater: int
   producedInternalNet: int
+  color: str
 
 
 class NetworkRack_50(NetworkRackBase):
@@ -18,6 +19,7 @@ class NetworkRack_50(NetworkRackBase):
     self.consumedCWater = 5
     self.producedInternalNet = 50
     self.producedFWater = 5
+    self.color = "0089ff"
     
 
 class NetworkRack_100(NetworkRackBase):
@@ -30,7 +32,7 @@ class NetworkRack_100(NetworkRackBase):
     self.consumedCWater = 7
     self.producedInternalNet = 100
     self.producedFWater = 7
-    
+    self.color = "89bce9"    
 
 class NetworkRack_200(NetworkRackBase):
   def __init__(self, name):
@@ -42,3 +44,4 @@ class NetworkRack_200(NetworkRackBase):
     self.consumedCWater = 10
     self.producedInternalNet = 200
     self.producedFWater = 40
+    self.color = "0f3e67"

@@ -4,6 +4,7 @@ class WaterSupplyBase(BaseModule):
   # Consumed/Produced resources
   consumedWaterConn: int
   producedFWater: int
+  color: str
 
 
 class WaterSupply_100(WaterSupplyBase):
@@ -14,6 +15,7 @@ class WaterSupply_100(WaterSupplyBase):
     self.price = 200
     self.producedFWater = 100
     self.consumedWaterConn = 1
+    self.color = "004aff"
 
 
 class WaterSupply_500(WaterSupplyBase):
@@ -24,3 +26,4 @@ class WaterSupply_500(WaterSupplyBase):
     self.price = 400
     self.producedFWater = 500
     self.consumedWaterConn = 1
+    self.color = "0339ba"

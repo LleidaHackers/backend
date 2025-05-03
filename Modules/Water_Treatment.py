@@ -5,6 +5,7 @@ class WaterTreatmentBase(BaseModule):
   consumedFWater: int
   consumedPower: int
   producedDWater: int
+  color: str
 
 
 class WaterTreatment_50(WaterTreatmentBase):
@@ -16,6 +17,7 @@ class WaterTreatment_50(WaterTreatmentBase):
     self.consumedFWater = 50
     self.consumedPower = 50
     self.producedDWater = 50
+    self.color = "ff7000"
 
 
 class WaterTreatment_250(WaterTreatmentBase):
@@ -27,6 +29,7 @@ class WaterTreatment_250(WaterTreatmentBase):
     self.consumedFWater = 250
     self.consumedPower = 90
     self.producedDWater = 250
+    self.color = "c95a03"
 
 
 class WaterTreatment_500(WaterTreatmentBase):
@@ -38,3 +41,4 @@ class WaterTreatment_500(WaterTreatmentBase):
     self.consumedFWater = 500
     self.consumedPower = 150
     self.producedDWater = 500
+    self.color = "a54b03"

@@ -7,6 +7,7 @@ class DataRackBase(BaseModule):
   consumedInternalNet: int
   producedDWater: int
   producedDataStorage: int
+  color: str
   
 
 class DataRack_100(DataRackBase):
@@ -20,6 +21,7 @@ class DataRack_100(DataRackBase):
     self.consumedInternalNet = 5
     self.producedDWater = 3
     self.producedDataStorage = 100
+    self.color = "f100ff"
     
 
 class DataRack_250(DataRackBase):
@@ -33,6 +35,7 @@ class DataRack_250(DataRackBase):
     self.consumedInternalNet = 10
     self.producedDWater = 3
     self.producedDataStorage = 250
+    self.color = "87358c"
 
 
 class DataRack_500(DataRackBase):
@@ -46,3 +49,4 @@ class DataRack_500(DataRackBase):
     self.consumedInternalNet = 20
     self.producedDWater = 6
     self.producedDataStorage = 500
+    self.color = "5c275f"
