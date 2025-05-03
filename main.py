@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
+from routes import modules
 
 app = FastAPI()
 
@@ -7,7 +8,7 @@ app = FastAPI()
 def redirect_to_docs():
     return RedirectResponse(url="/docs")
 
-@app.get("/test")
+@app.get("/tet")
 def test():
     return {
         "source": [
@@ -34,3 +35,4 @@ def test():
         ],
     }
 
+app.include_router(modules.router, prefix="/modules", tags=["modules"])
