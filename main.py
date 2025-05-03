@@ -30,7 +30,10 @@ data_rack_500 = DataRack_500("19")
 # Print the details of each module
 print("Transformer 100:")
 print(f"Size: {transformer_100.sizeX}x{transformer_100.sizeY}, Price: {transformer_100.price}, Consumed Grid Connection: {transformer_100.consumedGridConn}, Produced Power: {transformer_100.producedPower}")
-print()
+print(transformer_100.current_inputs)
+transformer_100.current_inputs.gridConnection = 12341
+print(transformer_100.current_inputs)
+
 print("Transformer 1000:")
 print(f"Size: {transformer_1000.sizeX}x{transformer_1000.sizeY}, Price: {transformer_1000.price}, Consumed Grid Connection: {transformer_1000.consumedGridConn}, Produced Power: {transformer_1000.producedPower}")
 print()
@@ -60,6 +63,8 @@ print(f"Size: {water_chiller_400.sizeX}x{water_chiller_400.sizeY}, Price: {water
 print()
 print("Network Rack 50:")
 print(f"Size: {network_rack_50.sizeX}x{network_rack_50.sizeY}, Price: {network_rack_50.price}, Consumed Power: {network_rack_50.consumedPower}, Consumed Chilled Water: {network_rack_50.consumedCWater}, Produced Internal Network: {network_rack_50.producedInternalNet}, Produced Fresh Water: {network_rack_50.producedFWater}")
+
+print()
 print()
 print("Network Rack 100:")
 print(f"Size: {network_rack_100.sizeX}x{network_rack_100.sizeY}, Price: {network_rack_100.price}, Consumed Power: {network_rack_100.consumedPower}, Consumed Chilled Water: {network_rack_100.consumedCWater}, Produced Internal Network: {network_rack_100.producedInternalNet}, Produced Fresh Water: {network_rack_100.producedFWater}")

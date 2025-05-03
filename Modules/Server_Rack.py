@@ -1,16 +1,35 @@
+from dataclasses import dataclass
 from BaseModule import BaseModule
 
+@dataclass
+class ServerRackInputs:
+    usablePower: int = 0
+    chilledWater: int = 0
+    internalNetwork: int = 0
+
+@dataclass
+class ServerRackOutputs:
+    distilledWater: int = 0
+    processing: int = 0
+    externalNetwork: int = 0
+
 class ServerRackBase(BaseModule):
-  # Consumed/Produced resources
-  consumedPower: int
-  consumedCWater: int
-  consumedInternalNet: int
-  producedDWater: int
-  producedProcessing: int
-  producedExternalNet: int
-  color: str
-
-
+    def __init__(self, name: str):
+        super().__init__(name)
+        # Resource consumption/production
+        self.consumedPower: int = 0
+        self.consumedCWater: int = 0
+        self.consumedInternalNet: int = 0
+        self.producedDWater: int = 0
+        self.producedProcessing: int = 0
+        self.producedExternalNet: int = 0
+        self.color: str = ""
+        
+        # Current state
+        self.current_inputs = ServerRackInputs()
+        self.current_outputs = ServerRackOutputs()
+        
+        
 class ServerRack_100(ServerRackBase):
   def __init__(self, name):
     super().__init__(name)
