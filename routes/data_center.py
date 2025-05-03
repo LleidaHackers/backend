@@ -20,6 +20,7 @@ class ModuleData(RootModel[Any]):
 @router.post("/")
 def create_data_center(data: dict):
     data["status"] = "Active"
+    data["budget"] = data.get("totalBudget", 0)
     space_x = data.get("space_x", 0)
     space_y = data.get("space_y", 0)
     data.update({
@@ -50,7 +51,7 @@ def create_data_center(data: dict):
 def save_module(id: str, data: dict):
     from bson import ObjectId
     FIELDS = [
-        "totalBudget", "budget", "powerConsume", "powerRequired", "accomulatePower", "occupedSurface",
+        "budget", "powerConsume", "powerRequired", "accomulatePower", "occupedSurface",
         "totalSurface", "waterUsage", "distilledWaterUsage", "chilledWaterUsage",
         "waterProduction", "freshWaterUsage", "freshWaterProduction",
         "distilledWaterProduction", "chilledWaterProduction",
