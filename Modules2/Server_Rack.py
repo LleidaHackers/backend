@@ -12,8 +12,7 @@ class ServerRackBase(BaseModule):
 
 class ServerRack_100(ServerRackBase):
   def __init__(self, posX, posY):
-    self.posX = posX
-    self.posY = posY
+    super().__init__("ServerRack_100", posX, posY)
     self.sizeX = 40
     self.sizeY = 40
     self.price = 8000
@@ -27,8 +26,7 @@ class ServerRack_100(ServerRackBase):
 
 class ServerRack_200(ServerRackBase):
   def __init__(self, posX, posY):
-    self.posX = posX
-    self.posY = posY
+    super().__init__("ServerRack_200", posX, posY)
     self.sizeX = 40
     self.sizeY = 40
     self.price =  12000
@@ -42,8 +40,7 @@ class ServerRack_200(ServerRackBase):
 
 class ServerRack_500(ServerRackBase):
   def __init__(self, posX, posY):
-    self.posX = posX
-    self.posY = posY
+    super().__init__("ServerRack_500", posX, posY)
     self.sizeX = 40
     self.sizeY = 40
     self.price =  50000

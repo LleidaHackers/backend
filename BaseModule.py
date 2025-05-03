@@ -1,4 +1,8 @@
+import random
+
 class BaseModule:
+  id: int
+  name: str
   # Position, may vary
   posX: int
   posY: int
@@ -7,10 +11,17 @@ class BaseModule:
   sizeY: int
   price: int
   # Connection with other modules
-  connections: dict = {
-    'input': [],
-    'output': [],
-  }
+  connections: dict 
+
+  def __init__(self, name, posX, posY):
+    self.id = random.randint(0, 1000000)  # Random ID for the module
+    self.name = name
+    self.posX = posX
+    self.posY = posY
+    self.connections = {
+      'input': [],
+      'output': []
+    }
 
   def setPos(self, posX, posY):
     self.posX = posX
