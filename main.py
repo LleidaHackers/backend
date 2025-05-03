@@ -7,4 +7,3 @@ if __name__ == "__main__":
         data = json.load(file)
         for node in data:
             parsedObjects.append(parseModule(node.get('nodes')[0]))
-        print(parsedObjects)
