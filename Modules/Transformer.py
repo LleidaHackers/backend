@@ -27,14 +27,21 @@ class TransformerBase(BaseModule, Thread):
         output = self.producedPower * (1 + error)
         self.current_outputs.usablePower = int(output)
         return output
-
+    
     def run(self):
         """Start background simulation loop."""
         self.running = True
-        while self.running:
+        client = self.connect_mqtt()
+        client.loop_start()
+        self.publish(client,"/test/topic")
+        self.subscribe(client,"/test/topic")
+        """"        while self.running:
             self.current_outputs.usablePower = self.generate()
             print(f"[{self.name}] Power Output: {self.current_outputs.usablePower:.2f} kW")
             time.sleep(1)
+            self.publish(client,"/test/topic")"""
+            
+        client.loop_stop()
 
     def stop(self):
         """Stop the simulation thread."""
