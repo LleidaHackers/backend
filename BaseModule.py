@@ -6,7 +6,7 @@ class BaseModule:
   # Position, may vary
   posX: int
   posY: int
-  # Characteristics, stay the same
+  # Characteristics, stay the same, will be set when
   sizeX: int
   sizeY: int
   price: int
