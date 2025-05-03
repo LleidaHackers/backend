@@ -1,4 +1,4 @@
-t FastAPI
+
 from fastapi.responses import RedirectResponse
 from routes import modules
 
