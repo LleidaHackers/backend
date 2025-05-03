@@ -1,13 +1,3 @@
-def parse():
-    """
-    Parses the input data and returns the corresponding object, with only the correct attributes.
-    """
-    import json
-    
-
-    # Define the classes for each module type
-
-
 def parseTransformer(data):
     """
     Parses the transformer data and returns a Transformer object.
@@ -15,6 +5,7 @@ def parseTransformer(data):
     from Modules.Transformer import Transformer_100, Transformer_1000, Transformer_5000
 
     type = data['id'].split('-')[0]
+    print("Type: "+str(type))
     new_object = None
     match type:
         case 'transformer_100':
@@ -36,6 +27,7 @@ def parseWaterSupply(data):
     """
     from Modules.Water_Supply import WaterSupply_100, WaterSupply_500
     type = data['id'].split('-')[0]
+    print("Type: "+str(type))
     new_object = None
     match type:
         case 'water_supply_100':
@@ -55,6 +47,7 @@ def parseWaterTreatment(data):
     """
     from Modules.Water_Treatment import WaterTreatment_50, WaterTreatment_250, WaterTreatment_500
     type = data['id'].split('-')[0]
+    print("Type: "+str(type))
     new_object = None
     match type:
         case 'water_treatment_50':
@@ -76,6 +69,7 @@ def parseWaterChiller(data):
     """
     from Modules.Water_Chiller import WaterChiller_100, WaterChiller_400
     type = data['id'].split('-')[0]
+    print("Type: "+str(type))
     new_object = None
     match type:
         case 'water_chiller_100':
@@ -95,6 +89,7 @@ def parseNetworkRack(data):
     """
     from Modules.Network_Rack import NetworkRack_50, NetworkRack_100, NetworkRack_200
     type = data['id'].split('-')[0]
+    print("Type: "+str(type))
     new_object = None
     match type:
         case 'network_rack_50':
@@ -116,6 +111,7 @@ def parseServerRack(data):
     """
     from Modules.Server_Rack import ServerRack_100, ServerRack_200, ServerRack_500
     type = data['id'].split('-')[0]
+    print("Type: "+str(type))
     new_object = None
     match type:
         case 'server_rack_100':
@@ -137,14 +133,15 @@ def parseDataRack(data):
     """
     from Modules.Data_Rack import DataRack_100, DataRack_250, DataRack_500
     type = data['id'].split('-')[0]
+    print("Type: "+str(type))
     new_object = None
     match type:
         case 'data_rack_100':
-            new_object = DataRack_100(data['data']['label'], data['posX'], data['posY'])
+            new_object = DataRack_100(data['data']['label'])
         case 'data_rack_250':
-            new_object = DataRack_250(data['data']['label'], data['posX'], data['posY'])
+            new_object = DataRack_250(data['data']['label'])
         case 'data_rack_500':
-            new_object = DataRack_500(data['data']['label'], data['posX'], data['posY'])
+            new_object = DataRack_500(data['data']['label'])
         case _:
             raise ValueError(f"This item is not a data rack: {data['data']['label']}")
     
@@ -168,7 +165,7 @@ def parseModule(data):
     match module_type:
         case 'transformer':
             return parseTransformer(data)
-        case 'watter_supply':
+        case 'water_supply':
             return parseWaterSupply(data)
         case 'water_treatment':
             return parseWaterTreatment(data)
