@@ -21,7 +21,7 @@ class Transformer_100(TransformerBase):
     self.posY = posY
     self.sizeX = 40
     self.sizeY = 45
-    self.prize = 1000
+    self.price = 1000
     self.consumedGridConn = 1
     self.producedPower = 100
     self.connections = {'input':{}, 'output':{}}
@@ -33,7 +33,7 @@ class Transformer_1000(TransformerBase):
     self.posY = posY
     self.sizeX = 100
     self.sizeY = 100
-    self.prize = 50000
+    self.price = 50000
     self.consumedGridConn = 1
     self.producedPower = 1000
     self.connections = {'input':{}, 'output':{}}
@@ -45,7 +45,7 @@ class Transformer_5000(TransformerBase):
     self.posY = posY
     self.sizeX = 200
     self.sizeY = 200
-    self.prize = 250000
+    self.price = 250000
     self.consumedGridConn = 1
     self.producedPower = 5000
     self.connections = {'input':{}, 'output':{}}
