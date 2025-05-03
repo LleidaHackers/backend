@@ -1,4 +1,4 @@
-from module import Module
+from Module import Module
 class Server_Rack(Moudle):
     def __init__(self,name,id):
         super().__init__(name, id)

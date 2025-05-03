@@ -1,4 +1,4 @@
-from module import Module
+from Module import Module
 
 class Data_Rack(Module):
     def __init__(self, name, id):
