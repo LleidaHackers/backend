@@ -1,10 +1,10 @@
-from Modules2.Transformer import Transformer_100, Transformer_1000, Transformer_5000
-from Modules2.Water_Supply import WaterSupply_100, WaterSupply_500
-from Modules2.Water_Treatment import WaterTreatment_50, WaterTreatment_250, WaterTreatment_500
-from Modules2.Water_Chiller import WaterChiller_100, WaterChiller_400
-from Modules2.Network_Rack import NetworkRack_50, NetworkRack_100, NetworkRack_200
-from Modules2.Server_Rack import ServerRack_100, ServerRack_200, ServerRack_500
-from Modules2.Data_Rack import DataRack_100, DataRack_250, DataRack_500
+from Modules.Transformer import Transformer_100, Transformer_1000, Transformer_5000
+from Modules.Water_Supply import WaterSupply_100, WaterSupply_500
+from Modules.Water_Treatment import WaterTreatment_50, WaterTreatment_250, WaterTreatment_500
+from Modules.Water_Chiller import WaterChiller_100, WaterChiller_400
+from Modules.Network_Rack import NetworkRack_50, NetworkRack_100, NetworkRack_200
+from Modules.Server_Rack import ServerRack_100, ServerRack_200, ServerRack_500
+from Modules.Data_Rack import DataRack_100, DataRack_250, DataRack_500
 
 # Create an instance of each module
 transformer_100 = Transformer_100(0, 0)
