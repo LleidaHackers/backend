@@ -1,0 +1,134 @@
+{
+  "id": "68164c4963097215bf3bde6f",
+  "nodes": [
+    {
+      "id": "network_rack_50-1",
+      "type": "custom",
+      "position": {
+        "x": -251.96356816812585,
+        "y": -90.18735550582255
+      },
+      "data": {
+        "label": "Network_Rack_50\n($2000)",
+        "type": "network_rack",
+        "power": 0,
+        "demand": 50,
+        "inputs": [
+          "Usable_Power"
+        ],
+        "outputs": [
+          "Internal_Network"
+        ],
+        "surface": 1600
+      },
+      "style": {
+        "borderRadius": 8,
+        "padding": 8,
+        "backgroundColor": "#D1FAE5",
+        "border": "1px solid #CBD5E1"
+      },
+      "width": 177,
+      "height": 131,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -251.96356816812585,
+        "y": -90.18735550582255
+      },
+      "dragging": false
+    },
+    {
+      "id": "transformer_100-3",
+      "type": "custom",
+      "position": {
+        "x": -592.0313665263011,
+        "y": 3.813164136849764
+      },
+      "data": {
+        "label": "Transformer_100\n($1000)",
+        "type": "transformer",
+        "power": 100,
+        "demand": 0,
+        "inputs": [
+          "Grid_Connection"
+        ],
+        "outputs": [
+          "Usable_Power"
+        ],
+        "surface": 1800
+      },
+      "style": {
+        "borderRadius": 8,
+        "padding": 8,
+        "backgroundColor": "#E5E7EB",
+        "border": "1px solid #CBD5E1"
+      },
+      "width": 177,
+      "height": 131,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -592.0313665263011,
+        "y": 3.813164136849764
+      },
+      "dragging": false
+    },
+    {
+      "id": "network_rack_50-3",
+      "type": "custom",
+      "position": {
+        "x": -295.5116441912013,
+        "y": 108.79065430334614
+      },
+      "data": {
+        "label": "Network_Rack_50\n($2000)",
+        "type": "network_rack",
+        "power": 0,
+        "demand": 50,
+        "inputs": [
+          "Usable_Power"
+        ],
+        "outputs": [
+          "Internal_Network"
+        ],
+        "surface": 1600
+      },
+      "style": {
+        "borderRadius": 8,
+        "padding": 8,
+        "backgroundColor": "#D1FAE5",
+        "border": "1px solid #CBD5E1"
+      },
+      "width": 177,
+      "height": 131,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -295.5116441912013,
+        "y": 108.79065430334614
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "transformer_100-3",
+      "sourceHandle": "Usable_Power-out",
+      "target": "network_rack_50-1",
+      "targetHandle": "Usable_Power-in",
+      "type": "custom",
+      "data": {
+        "label": "Usable_Power"
+      },
+      "id": "reactflow__edge-transformer_100-3Usable_Power-out-network_rack_50-1Usable_Power-in"
+    },
+    {
+      "source": "transformer_100-3",
+      "sourceHandle": "Usable_Power-out",
+      "target": "network_rack_50-3",
+      "targetHandle": "Usable_Power-in",
+      "type": "custom",
+      "data": {
+        "label": "Usable_Power"
+      },
+      "id": "reactflow__edge-transformer_100-3Usable_Power-out-network_rack_50-3Usable_Power-in"
+    }
+  ]
+}

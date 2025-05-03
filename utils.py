@@ -17,7 +17,6 @@ def parseTransformer(data):
         case _:
             raise ValueError(f"This item is not a transformer: {data['data']['label']}")
     
-
     return new_object if new_object is not None else f"Something went wrong while parsing the following transformer data: {data['data']['label']}."
 
 
@@ -179,3 +178,15 @@ def parseModule(data):
             return parseDataRack(data)
         case _:
             raise ValueError(f"Unknown module type: {module_type}")
+        
+
+def parseConnections(data):
+    """
+    Parses the connections data and returns a list of connections.
+    """
+    connections = []
+    for connection in data:
+        source = connection['source']
+        target = connection['target']
+        connections.append((source, target))
+    return connections
