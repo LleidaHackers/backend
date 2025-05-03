@@ -212,16 +212,17 @@ def create_data_center(data: dict):
     return {"inserted_id": str(result.inserted_id)}
 
 @router.post("/save-data-center/{id}")
-def save_module(id: str, data: ModuleData):
-    # Aquí puedes guardar el módulo en la base de datos
-    # Por simplicidad, lo guardamos en una colección de MongoDB
-    data_center_collection.update_one(
-        {"id": id},
-        {"$set": {"data": str(data)}},
-        upsert=True
+def save_module(id: str, data: dict):
+    from bson import ObjectId
+    result = data_center_collection.update_one(
+        {"_id": ObjectId(id)},  # CAMBIO AQUÍ
+        {"$set": data},
+        upsert=False
     )
-
-    return {"status": "success", "id": id}
+    if result.modified_count > 0:
+        return {"status": "success", "id": id}
+    else:
+        return {"status": "error", "message": "Update failed or no changes made"}
 
 # Nuevo endpoint para eliminar data centers por _id (ObjectId)
 @router.delete("/delete-data-center/{id}")

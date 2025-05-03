@@ -24,5 +24,13 @@ services:
 
     environment:
       - TZ=UTC  # Set your timezone if needed
+
+  mqtt-web-client:
+    image: vergissberlin/hivemq-mqtt-web-client
+    restart: always
+    ports:
+        - 80
+    depends_on:
+      - mosquitto
 volumes:
   mongodb_data:
