@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: mongosh --eval "db.adminCommand('ping')"
+      interval: 30s
+      timeout: 30s
+      retries: 3
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"  # MQTT default port
+      - "9001:9001"  # Websocket port (optional)
+
+    environment:
+      - TZ=UTC  # Set your timezone if needed
+
+  mqtt-web-client:
+    image: vergissberlin/hivemq-mqtt-web-client
+    restart: always
+    ports:
+        - 80
+    depends_on:
+      - mosquitto
+volumes:
+  mongodb_data:
