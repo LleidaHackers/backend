@@ -1,0 +1,696 @@
+[
+    {
+        "id": "6816322631ce9c56c4cac9521",
+        "nodes": [
+        {
+            "id": "transformer_100-1",
+            "type": "custom",
+            "position": {
+                "x": 11.863301667468534,
+                "y": -30.666511803317746
+            },
+            "data": {
+                "label": "Transformer_100",
+                "type": "transformer",
+                "power": 100,
+                "demand": 0,
+                "inputs": [
+                    "Grid_Connection"
+                ],
+                "outputs": [
+                    "Usable_Power"
+                ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#ECFDF5",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131,
+            "selected": true,
+            "positionAbsolute": {
+                "x": 11.863301667468534,
+                "y": -30.666511803317746
+            },
+            "dragging": false
+        }],
+        "edges": []
+    },
+    {
+        "id": "6816322631cwpc56c4cac9521",
+        "nodes": [
+        {
+            "id": "transformer_1000-1",
+            "type": "custom",
+            "position": {
+                "x": 211.863301667468534,
+                "y": -30.666511803317746
+            },
+            "data": {
+                "label": "Transformer_1000",
+                "type": "transformer",
+                "power": 100,
+                "demand": 0,
+                "inputs": [
+                    "Grid_Connection"
+                ],
+                "outputs": [
+                    "Usable_Power"
+                ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#ECFDF5",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131,
+            "selected": true,
+            "positionAbsolute": {
+                "x": 11.863301667468534,
+                "y": -30.666511803317746
+            },
+            "dragging": false
+        }],
+        "edges": []
+    },
+    {
+        "id": "681632263123pc56c4cac9521",
+        "nodes": [
+        {
+            "id": "transformer_5000-1",
+            "type": "custom",
+            "position": {
+                "x": 211.863301667468534,
+                "y": -30.666511803317746
+            },
+            "data": {
+                "label": "Transformer_5000",
+                "type": "transformer",
+                "power": 100,
+                "demand": 0,
+                "inputs": [
+                    "Grid_Connection"
+                ],
+                "outputs": [
+                    "Usable_Power"
+                ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#ECFDF5",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131,
+            "selected": true,
+            "positionAbsolute": {
+                "x": 11.863301667468534,
+                "y": -30.666511803317746
+            },
+            "dragging": false
+        }],
+        "edges": []
+    },
+    {
+        "id": "6816322631ce9c56c4cac954",
+        "nodes": [
+        {
+            "id": "water_treatment_50-1",
+            "type": "custom",
+            "position": {
+                "x": 374.78841400387444,
+                "y": -6.1927258540686125
+            },
+            "data": {
+            "label": "Water_Treatment_50",
+            "type": "water_treatment",
+            "power": 0,
+            "demand": 50,
+            "inputs": [
+                "Fresh_Water",
+                "Usable_Power"
+            ],
+            "outputs": [
+                "Distlled_Water"
+            ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#FEF3C7",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 193,
+            "height": 131,
+            "selected": true,
+            "positionAbsolute": {
+                "x": 374.78841400387444,
+                "y": -6.1927258540686125
+            },
+            "dragging": false
+        }
+        ],
+        "edges": []
+    },
+    {
+        "id": "6816322631ce9c56123c954",
+        "nodes": [
+        {
+            "id": "water_treatment_250-1",
+            "type": "custom",
+            "position": {
+                "x": 374.78841400387444,
+                "y": -6.1927258540686125
+            },
+            "data": {
+            "label": "Water_Treatment_250",
+            "type": "water_treatment",
+            "power": 0,
+            "demand": 50,
+            "inputs": [
+                "Fresh_Water",
+                "Usable_Power"
+            ],
+            "outputs": [
+                "Distlled_Water"
+            ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#FEF3C7",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 193,
+            "height": 131,
+            "selected": true,
+            "positionAbsolute": {
+                "x": 374.78841400387444,
+                "y": -6.1927258540686125
+            },
+            "dragging": false
+        }
+        ],
+        "edges": []
+    },
+    {
+        "id": "6816322631ce9c56c4cac954",
+        "nodes": [
+        {
+            "id": "water_treatment_500-1",
+            "type": "custom",
+            "position": {
+                "x": 374.78841400387444,
+                "y": -6.1927258540686125
+            },
+            "data": {
+            "label": "Water_Treatment_500",
+            "type": "water_treatment",
+            "power": 0,
+            "demand": 50,
+            "inputs": [
+                "Fresh_Water",
+                "Usable_Power"
+            ],
+            "outputs": [
+                "Distlled_Water"
+            ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#FEF3C7",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 193,
+            "height": 131,
+            "selected": true,
+            "positionAbsolute": {
+                "x": 374.78841400387444,
+                "y": -6.1927258540686125
+            },
+            "dragging": false
+        }
+        ],
+        "edges": []
+    },
+    {
+        "id": "6816322631ce9c56c4cac954",
+        "nodes": [
+        {
+            "id": "network_rack_50-1",
+            "type": "custom",
+            "position": {
+                "x": 416.04838466080605,
+                "y": 33.86019879335813
+            },
+            "data": {
+                "label": "Network_Rack_50",
+                "type": "network_rack",
+                "power": 0,
+                "demand": 50,
+                "inputs": [
+                    "Usable_Power"
+                ],
+                "outputs": [
+                    "Internal_Network"
+                ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#FEF3C7",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+        }
+        ],
+        "edges": []
+    },
+    {
+        "id": "6811232631ce9c56c4cac954",
+        "nodes": [
+        {
+            "id": "network_rack_100-1",
+            "type": "custom",
+            "position": {
+                "x": 416.04838466080605,
+                "y": 33.86019879335813
+            },
+            "data": {
+                "label": "Network_Rack_50",
+                "type": "network_rack",
+                "power": 0,
+                "demand": 50,
+                "inputs": [
+                    "Usable_Power"
+                ],
+                "outputs": [
+                    "Internal_Network"
+                ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#FEF3C7",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+        }
+        ],
+        "edges": []
+    },
+    {
+        "id": "6816322631ce9c56c4cac123",
+        "nodes": [
+        {
+            "id": "network_rack_200-1",
+            "type": "custom",
+            "position": {
+                "x": 416.04838466080605,
+                "y": 33.86019879335813
+            },
+            "data": {
+                "label": "Network_Rack_200",
+                "type": "network_rack",
+                "power": 0,
+                "demand": 50,
+                "inputs": [
+                    "Usable_Power"
+                ],
+                "outputs": [
+                    "Internal_Network"
+                ]
+            },
+            "style": {
+                "borderRadius": 8,
+                "padding": 8,
+                "backgroundColor": "#FEF3C7",
+                "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+        }
+        ],
+        "edges": []
+    },
+    {
+        "id": "68163c51e6d7df87f549cf8f",
+        "nodes": [
+          {
+            "id": "water_supply_100-1",
+            "type": "custom",
+            "position": {
+              "x": 205.54753207424093,
+              "y": 73.57684671481226
+            },
+            "data": {
+              "label": "Water_Supply_100",
+              "type": "water_supply",
+              "power": 0,
+              "demand": 0,
+              "inputs": [
+                "Water_Connection"
+              ],
+              "outputs": [
+                "Fresh_Water"
+              ],
+              "surface": 2500
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#EEF2FF",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 111
+          }
+        ],
+        "edges": []
+      },
+      {
+        "id": "681612231e6d7df87f549cf8f",
+        "nodes": [
+          {
+            "id": "water_supply_500-1",
+            "type": "custom",
+            "position": {
+              "x": 205.54753207424093,
+              "y": 73.57684671481226
+            },
+            "data": {
+              "label": "Water_Supply_500",
+              "type": "water_supply",
+              "power": 0,
+              "demand": 0,
+              "inputs": [
+                "Water_Connection"
+              ],
+              "outputs": [
+                "Fresh_Water"
+              ],
+              "surface": 2500
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#EEF2FF",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 111
+          }
+        ],
+        "edges": []
+      },
+      {
+        "id": "68163c51e6d7df87f549cf8f",
+        "nodes": [
+          {
+            "id": "water_chiller_100-1",
+            "type": "custom",
+            "position": {
+              "x": 77.660418728811,
+              "y": 134.0952567570171
+            },
+            "data": {
+              "label": "Water_Chiller_100",
+              "type": "water_chiller",
+              "power": 0,
+              "demand": 500,
+              "inputs": [
+                "Distlled_Water",
+                "Usable_Power"
+              ],
+              "outputs": [
+                "Chilled_Water"
+              ],
+              "surface": 10000
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#FEF3C7",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+          }
+        ],
+        "edges": []
+      },
+      {
+        "id": "68163c51e6d7df87f549cf8f",
+        "nodes": [
+          {
+            "id": "water_chiller_400-1",
+            "type": "custom",
+            "position": {
+              "x": 77.660418728811,
+              "y": 134.0952567570171
+            },
+            "data": {
+              "label": "Water_Chiller_400",
+              "type": "water_chiller",
+              "power": 0,
+              "demand": 500,
+              "inputs": [
+                "Distlled_Water",
+                "Usable_Power"
+              ],
+              "outputs": [
+                "Chilled_Water"
+              ],
+              "surface": 10000
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#FEF3C7",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+          }
+        ],
+        "edges": []
+      },
+      {
+        "id": "68163c51e6d7df87f549cf8f",
+        "nodes": [
+          {
+            "id": "data_rack_100-1",
+            "type": "custom",
+            "position": {
+              "x": 357.24222233163374,
+              "y": 154.02619962732695
+            },
+            "data": {
+              "label": "Data_Rack_100",
+              "type": "data_rack",
+              "power": 0,
+              "demand": 15,
+              "inputs": [
+                "Usable_Power"
+              ],
+              "outputs": [
+                "Internal_Network"
+              ],
+              "surface": 1600
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#FEF3C7",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+          }
+        ],
+        "edges": []
+      },
+      {
+        "id": "68161231e6d7df87f549cf8f",
+        "nodes": [
+          {
+            "id": "data_rack_250-1",
+            "type": "custom",
+            "position": {
+              "x": 357.24222233163374,
+              "y": 154.02619962732695
+            },
+            "data": {
+              "label": "Data_Rack_250",
+              "type": "data_rack",
+              "power": 0,
+              "demand": 15,
+              "inputs": [
+                "Usable_Power"
+              ],
+              "outputs": [
+                "Internal_Network"
+              ],
+              "surface": 1600
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#FEF3C7",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+          }
+        ],
+        "edges": []
+      },
+      {
+        "id": "68163c51e6d7df87f5123f8f",
+        "nodes": [
+          {
+            "id": "data_rack_500-1",
+            "type": "custom",
+            "position": {
+              "x": 357.24222233163374,
+              "y": 154.02619962732695
+            },
+            "data": {
+              "label": "Data_Rack_500",
+              "type": "data_rack",
+              "power": 0,
+              "demand": 15,
+              "inputs": [
+                "Usable_Power"
+              ],
+              "outputs": [
+                "Internal_Network"
+              ],
+              "surface": 1600
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#FEF3C7",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+          }
+        ],
+        "edges": []
+      },
+      {
+        "id": "68163c51e6d7df871234cf8f",
+        "nodes": [
+          {
+            "id": "server_rack_100-1",
+            "type": "custom",
+            "position": {
+              "x": 185.62794042690973,
+              "y": 295.24495924477924
+            },
+            "data": {
+              "label": "Server_Rack_100",
+              "type": "server_rack",
+              "power": 0,
+              "demand": 240,
+              "inputs": [
+                "Usable_Power"
+              ],
+              "outputs": [
+                "Internal_Network"
+              ],
+              "surface": 1600
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#FEF3C7",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+          }
+        ],
+        "edges": []
+      },
+      {
+        "id": "68123c51e6d7df87f549cf8f",
+        "nodes": [
+          {
+            "id": "server_rack_200-1",
+            "type": "custom",
+            "position": {
+              "x": 185.62794042690973,
+              "y": 295.24495924477924
+            },
+            "data": {
+              "label": "Server_Rack_200",
+              "type": "server_rack",
+              "power": 0,
+              "demand": 240,
+              "inputs": [
+                "Usable_Power"
+              ],
+              "outputs": [
+                "Internal_Network"
+              ],
+              "surface": 1600
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#FEF3C7",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+          }
+        ],
+        "edges": []
+      },
+      {
+        "id": "68163c51e6d7df87f549cf8f",
+        "nodes": [
+          {
+            "id": "server_rack_500-1",
+            "type": "custom",
+            "position": {
+              "x": 185.62794042690973,
+              "y": 295.24495924477924
+            },
+            "data": {
+              "label": "Server_Rack_500",
+              "type": "server_rack",
+              "power": 0,
+              "demand": 240,
+              "inputs": [
+                "Usable_Power"
+              ],
+              "outputs": [
+                "Internal_Network"
+              ],
+              "surface": 1600
+            },
+            "style": {
+              "borderRadius": 8,
+              "padding": 8,
+              "backgroundColor": "#FEF3C7",
+              "border": "1px solid #CBD5E1"
+            },
+            "width": 177,
+            "height": 131
+          }
+        ],
+        "edges": []
+      }
+]
