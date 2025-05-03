@@ -8,6 +8,7 @@ from Modules.Server_Rack import ServerRack_100, ServerRack_200, ServerRack_500
 from Modules.Data_Rack import DataRack_100, DataRack_250, DataRack_500
 from Connection import Connection
 # Create an instance of each module
+water_chiller_100 = WaterChiller_100("9")
 transformer_100 = Transformer_100("1")
 transformer_1000 = Transformer_1000("2")
 transformer_5000 = Transformer_5000("3")
@@ -95,14 +96,23 @@ print("All modules have been created and their details have been printed.")
 
 print(transformer_100.id)
 #network_rack_50.conn_inputs.append(Connection("usablePower",transformer_100.id))
+#water_chiller_100.conn_inputs.append(Connection("distilledWater",water_supply_500.id))
+#water_chiller_100.conn_inputs.append(Connection("usablePower",transformer_100.id))
+#water_chiller_100.start()
+water_treatment_250.conn_inputs.append(Connection("freshWater",water_supply_500.id))
+water_treatment_250.conn_inputs.append(Connection("usablePower",transformer_100.id))
 water_chiller_100.conn_inputs.append(Connection("distilledWater",water_supply_500.id))
 water_chiller_100.conn_inputs.append(Connection("usablePower",transformer_100.id))
+network_rack_100.conn_inputs.append(Connection("chilledWater",water_supply_500.id))
+network_rack_100.conn_inputs.append(Connection("usablePower",transformer_100.id))
 water_chiller_100.start()
+water_treatment_250.start()
 water_supply_500.start()
 transformer_100.start()
+network_rack_100.start()
 #network_rack_50.start()
 try:
-    time.sleep(5)  # Let them run for 5 seconds
+    time.sleep(10)  # Let them run for 5 seconds
 finally:
     transformer_100.stop()
     network_rack_50.stop()

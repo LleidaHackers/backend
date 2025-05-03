@@ -27,10 +27,19 @@ class NetworkRackBase(BaseModule, Thread):
         self.running = False
         # Current state using dataclasses
         self.current_inputs = NetworkRackInputs()
-        self.current_outputs = NetworkRackOutputs()
-        
+        self.current_outputs = {
+            "internalNetwork": 0, # Default value
+            "freshWater": 0  # Default value
+        }
 
-    
+        
+    def in_out_map(self, input) -> str:
+      if(input == "chilledWater"):
+        return "freshWater"
+      else:
+        None
+        
+          
     def run(self):
         """Start background simulation loop."""
         self.running = True

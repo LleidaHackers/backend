@@ -1,12 +1,14 @@
+from abc import abstractmethod
 from dataclasses import dataclass
 import random
+from threading import Thread
 import time
 from typing import List
 from paho.mqtt import client as mqtt_client
 from Connection import Connection
 
 
-class BaseModule():
+class BaseModule(Thread):
   broker = 'localhost'
   port = 1883
   # Generate a Client ID with the publish prefix.
@@ -25,6 +27,7 @@ class BaseModule():
 
 
   def __init__(self, name):
+    super().__init__(daemon=True)     
     self.id = random.randint(0, 1000000)  # Random ID for the module
     self.name = name
     self.posX = 0
@@ -33,7 +36,13 @@ class BaseModule():
     self.conn_inputs : List[Connection]= []
     self.conn_outputs : List[Connection]= [] 
     self.current_outputs : dict
-
+    self.running = False
+  
+    @abstractmethod
+    def in_out_map(self, input_type: str) -> str:
+        """All child classes must implement this"""
+        pass
+  
   def connect_mqtt(self):
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
@@ -54,6 +63,31 @@ class BaseModule():
     print(error)
     return client
   
+  def run(self):
+        if not hasattr(self, 'in_out_map'):
+          raise NotImplementedError(f"{self.__class__.__name__} must implement in_out_map method")
+        """Start background simulation loop."""
+        self.running = True
+        client = self.connect_mqtt()
+        client.loop_start()
+        outputs = list(self.current_outputs.keys())
+        topics = [] #[(f"/{self.conn_inputs[0].type}/{self.conn_inputs[0].id}",0),(f"/{self.conn_inputs[1].type}/{self.conn_inputs[1].id}",0),("Server3/kpi3",0)]
+        for connection in self.conn_inputs:
+          topics.append((f"/{connection.type}/{connection.id}",0))
+          
+        self.subscribe_child(client,topics,self.in_out_map)
+        while self.running:
+          for output in outputs:
+            print(f"on pub->{self.current_outputs}")
+            self.publish(client,f"/{output}/{self.id}",self.current_outputs[output],self.__module__ )
+          time.sleep(1)
+            
+        client.loop_stop()
+
+  def stop(self):
+      """Stop the simulation thread."""
+      
+      self.running = False
   def subscribe(self,client: mqtt_client,topic):
     def on_message(client, userdata, msg):
         print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
@@ -64,9 +98,10 @@ class BaseModule():
   
   def subscribe_child(self, client: mqtt_client, topic, in_out_map):
     # First call parent's implementation
+      print(f"AAAAAAAAAAAAAA{topic}")
       self.subscribe(client, topic)
       def child_on_message(client, userdata, msg):
-          print(f"[Chiller]Recieved: {msg.payload.decode()} from {msg.topic}")
+          print(f"[{self.__module__ }-{self.id}]Recieved: {msg.payload.decode()} from {msg.topic}")
           print(str(topic).split("/")[1])
           self.current_outputs[in_out_map(str(topic).split("/")[1])] = msg.payload.decode()
           
@@ -79,7 +114,7 @@ class BaseModule():
       # result: [0, 1]
       status = result[0]
       if status == 0:
-          print(f"Send `{msg}` to topic `{topic}`, {name}")
+          print(f"[{self.__module__}-{self.id}]Send: `{msg}` to topic `{topic}`")
       else:
           print(f"Failed to send message to topic {topic}")
 

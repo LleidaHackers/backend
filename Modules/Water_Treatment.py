@@ -21,8 +21,16 @@ class WaterTreatmentBase(BaseModule):
         
         # Current state using dataclasses
         self.current_inputs = WaterTreatmentInputs()
-        self.current_outputs = WaterTreatmentOutputs()
-
+        self.current_outputs = {
+            "distilledWater": 0  # Default value
+        }
+      
+        
+    def in_out_map(self, input) -> str:
+      if(input == "freshWater"):
+        return "distilledWater"
+      else:
+        None
 class WaterTreatment_50(WaterTreatmentBase):
   def __init__(self, name):
     super().__init__(name)

@@ -4,12 +4,6 @@ from BaseModule import BaseModule
 from dataclasses import dataclass, fields
 from paho.mqtt import client as mqtt_client
 
-def in_out_map(input) -> str:
-  if(input == "distilledWater"):
-    return "chilledWater"
-  else:
-    None
-
 @dataclass
 class WaterChillerInputs:
     distilledWater: int = 0  # Note: Fixed typo from 'distlledWater'
@@ -19,15 +13,14 @@ class WaterChillerInputs:
 class WaterChillerOutputs:
     chilledWater: int = 0
 
-class WaterChillerBase(BaseModule, Thread):
+class WaterChillerBase(BaseModule):
     def __init__(self, name: str):
-        Thread.__init__(self, daemon=True)     
-        BaseModule.__init__(self, name)  
+        super().__init__(name)  
         # Resource tracking
         self.consumedDWater: int = 0  # Distilled water consumption
         self.consumedPower: int = 0   # Power consumption
         self.producedCWater: int = 0  # Chilled water production
-        self.running = False
+       
         self.color: str = ""
         
         # Current state using dataclasses
@@ -35,30 +28,14 @@ class WaterChillerBase(BaseModule, Thread):
         self.current_outputs = {
             "chilledWater": 0  # Default value
         }
+      
+    def in_out_map(self, input) -> str:
+      if(input == "distilledWater"):
+        return "chilledWater"
+      else:
+        None
 
-    def run(self):
-        """Start background simulation loop."""
-        self.running = True
-        client = self.connect_mqtt()
-        client.loop_start()
-        outputs = list(self.current_outputs.keys())
-        topics = [] #[(f"/{self.conn_inputs[0].type}/{self.conn_inputs[0].id}",0),(f"/{self.conn_inputs[1].type}/{self.conn_inputs[1].id}",0),("Server3/kpi3",0)]
-        for connection in self.conn_inputs:
-          topics.append((f"/{connection.type}/{connection.id}",0))
-          
-        self.subscribe_child(client,topics,in_out_map)
-        while self.running:
-          for output in outputs:
-            print(f"on pub->{self.current_outputs}")
-            self.publish(client,f"/{output}/{self.id}",self.current_outputs[output],self.__module__ )
-          time.sleep(1)
-            
-        client.loop_stop()
-
-    def stop(self):
-        """Stop the simulation thread."""
-        
-        self.running = False
+    
   
 class WaterChiller_100(WaterChillerBase):
   def __init__(self, name):

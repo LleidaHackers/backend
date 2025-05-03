@@ -10,7 +10,7 @@ class WaterSupplyInputs:
 
 @dataclass
 class WaterSupplyOutputs:
-    distilledWater: int = 0
+    freshWater: int = 0
 
 class WaterSupplyBase(BaseModule, Thread):
     def __init__(self, name: str):
