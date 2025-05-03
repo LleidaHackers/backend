@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from routes import modules
 from routes import build
+from routes import data_center
+from routes import workflow
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -12,34 +14,12 @@ app = FastAPI()
 def redirect_to_docs():
     return RedirectResponse(url="/docs")
 
-@app.get("/tet")
-def test():
-    return {
-        "source": [
-            {
-                "name": "Solar Panel",
-                "icon": "Sun",
-                "specs": ["Output: 20W", "Type: Renewable"],
-                "cost": 2000,
-            },
-        ],
-        "sink": [
-            {
-                "name": "Server",
-                "icon": "Server",
-                "specs": ["Consumption: 10W", "Critical Load"],
-                "cost": 1500,
-            },
-            {
-                "name": "Cooler",
-                "icon": "Snowflake",
-                "specs": ["Consumption: 5W", "Thermal Control"],
-                "cost": 1000,
-            },
-        ],
-    }
-
 app.include_router(modules.router, prefix="/modules", tags=["modules"])
+app.include_router(workflow.router, prefix="/workflow", tags=["workflow"])
+app.include_router(data_center.router, prefix="/data-center", tags=["data-center"])
+app.include_router(build.router, prefix="/build", tags=["build simulation"])
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins='*',
@@ -47,6 +27,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-app.include_router(build.router, prefix="", tags=["build simulation"])
-

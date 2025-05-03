@@ -19,14 +19,14 @@ class ModuleData(RootModel[Any]):
     pass
 
 
-@router.get("/modules")
+@router.get("/")
 def get_available_modules():
     json_path = Path("data/devices.json")  # ajusta la ruta si está en otro sitio
     with json_path.open("r", encoding="utf-8") as f:
         data = json.load(f)
     return data
 
-@router.post("/save/{id}")
+@router.post("/{id}")
 def save_module(id: str, data: ModuleData):
     # Aquí puedes guardar el módulo en la base de datos
     # Por simplicidad, lo guardamos en una colección de MongoDB
@@ -38,7 +38,7 @@ def save_module(id: str, data: ModuleData):
 
     return {"status": "success", "id": id}
 
-@router.get("/get/{id}")
+@router.get("/{id}")
 def get_module(id: str):
     module = module_collection.find_one({"id": id})
     if module:
@@ -106,13 +106,15 @@ def get_all_modules():
     return JSONResponse(modules_cleaned)
 
 
-@router.delete("/delete/{id}")
+@router.delete("/{id}")
 def delete_module(id: str):
     result = module_collection.delete_one({"id": id})
     if result.deleted_count > 0:
         return {"status": "success", "message": "Module deleted"}
     else:
         return {"status": "error", "message": "Module not found"}
+
+"""
 
 @router.get("/workflow")
 def get_workflow():
@@ -195,6 +197,7 @@ def get_all_workflows():
 @router.post("/create-data-center")
 def create_data_center(data: dict):
     data["status"] = "Active"
+    data["totalBudget"] = data.get("budget", 0)
     space_x = data.get("space_x", 0)
     space_y = data.get("space_y", 0)
 
@@ -207,6 +210,17 @@ def create_data_center(data: dict):
         "waterUsage": 0,
         "distilledWaterUsage": 0,
         "chilledWaterUsage": 0,
+        "waterProduction": 0,
+        "freshWaterUsage": 0,
+        "freshWaterProduction": 0,
+        "distilledWaterProduction": 0,
+        "chilledWaterProduction": 0,
+        "internalNetworkUsage": 0,
+        "internalNetworkProduction": 0,
+        "externalNetworkProduction": 0,
+        "soundLevel": 0,
+        "procesProduction": 0,
+        "dataStorageProduction": 0
     })
     result = data_center_collection.insert_one(data)
     return {"inserted_id": str(result.inserted_id)}
@@ -214,9 +228,18 @@ def create_data_center(data: dict):
 @router.post("/save-data-center/{id}")
 def save_module(id: str, data: dict):
     from bson import ObjectId
+    FIELDS = [
+        "totalBudget", "budget", "powerConsume", "powerRequired", "accomulatePower", "occupedSurface",
+        "totalSurface", "waterUsage", "distilledWaterUsage", "chilledWaterUsage",
+        "waterProduction", "freshWaterUsage", "freshWaterProduction",
+        "distilledWaterProduction", "chilledWaterProduction",
+        "internalNetworkUsage", "internalNetworkProduction", "externalNetworkProduction",
+        "soundLevel", "procesProduction", "dataStorageProduction"
+    ]
+    cleaned_data = {key: data.get(key, 0) for key in FIELDS}
     result = data_center_collection.update_one(
-        {"_id": ObjectId(id)},  # CAMBIO AQUÍ
-        {"$set": data},
+        {"_id": ObjectId(id)},
+        {"$set": cleaned_data},
         upsert=False
     )
     if result.modified_count > 0:
@@ -232,7 +255,7 @@ def delete_data_center(id: str):
     if result.deleted_count > 0:
         return {"status": "success", "message": "Data center deleted"}
     else:
-        return {"status": "error", "message": "Data center not found"}
+        return {"status"    : "error", "message": "Data center not found"}
 
 @router.get("/data-center")
 def get_data_center():
@@ -254,3 +277,4 @@ def get_data_center_id(id: str):
         return JSONResponse(content=json.loads(dumps(module)))
     
     return JSONResponse(content={"error": "Module not found"}, status_code=404)
+"""
