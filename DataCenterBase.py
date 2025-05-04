@@ -1,4 +1,4 @@
-class DatacenterBase:
+class DataCenterBase:
   id: int
   gridConnection: int
   waterConnection: int
