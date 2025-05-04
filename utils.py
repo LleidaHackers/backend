@@ -149,6 +149,27 @@ def parseDataRack(data):
     return new_object if new_object is not None else f"Something went wrong while parsing the following data rack data: {name}."
 
 
+def parseDataCenter(data):
+    """
+    Parses the data center data and returns a DataCenter object.
+    """
+    from DataCenters import Server_Square, Dense_Storage, Supercomputer
+    type = data['id'].split('-')[0]
+    new_object = None
+    name = data['data']['label'].split('\n')[0]
+    match type:
+        case 'server_square':
+            new_object = Server_Square(name)
+        case 'dense_storage':
+            new_object = Dense_Storage(name)
+        case 'supercomputer':
+            new_object = Supercomputer(name)
+        case _:
+            raise ValueError(f"This item is not a data center: {name}")
+    new_object.id = data['id']
+
+    return new_object if new_object is not None else f"Something went wrong while parsing the following data center data: {name}."
+
 def parseModule(data):
     """
     Parses the module data and returns the corresponding object, with only the correct attributes.
@@ -170,6 +191,8 @@ def parseModule(data):
             return parseServerRack(data)
         case 'data_rack':
             return parseDataRack(data)
+        case 'data_center':
+            return parseDataCenter(data)
         case _:
             raise ValueError(f"Unknown module type: {module_type}")
         
