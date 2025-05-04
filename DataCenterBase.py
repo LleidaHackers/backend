@@ -1,23 +1,18 @@
-class DatacenterBase:
+class DataCenterBase:
+  id: int
+  name: str
   gridConnection: int
   waterConnection: int
   spaceX: int
   spaceY: int
-  modules: list
+  connectedIn: list[str] # List of ids of connected modules
+  connectedOut: list[str] # List of ids of connected modules
 
-  def __init__(self, gridConnection, waterConnection, spaceX, spaceY):
+  def __init__(self, name, gridConnection, waterConnection, spaceX, spaceY):
+    self.name = name
     self.gridConnection = gridConnection
     self.waterConnection = waterConnection
     self.spaceX = spaceX
     self.spaceY = spaceY
-    self.modules = []
-
-  def addModule(self, module):
-    if module in self.modules:
-      raise ValueError("Module already exists in the datacenter.")
-    self.modules.append(module)
-  
-  def removeModule(self, module):
-    if module not in self.modules:
-      raise ValueError("Module not found in the datacenter.")
-    self.modules.remove(module)
+    self.connectedIn = [] # List of ids of connected modules
+    self.connectedOut = []

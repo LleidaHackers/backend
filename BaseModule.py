@@ -1,7 +1,5 @@
-import random
-
 class BaseModule:
-  id: int
+  id: str # Given from frontend
   name: str
   # Position, will vary in the future (after solving for positioning)
   posX: int
@@ -10,17 +8,20 @@ class BaseModule:
   sizeX: int
   sizeY: int
   price: int
-  
-  # Connection with other modules
-  connections: dict 
+
+  connectedIn: list[str] # List of ids of connected modules
+  connectedOut: list[str] # List of ids of connected modules
 
   def __init__(self, name):
 
   def __init__(self, name):
-    self.id = random.randint(0, 1000000)  # Random ID for the module
     self.name = name
     self.posX = 0
     self.posY = 0
+
+    self.connectedIn = []
+    self.connectedOut = []
+
     self.color = "#FF0000"
     self.posX = 0
     self.posY = 0
@@ -56,3 +57,4 @@ class BaseModule:
       self.connections['output'].remove(other_object_id)
     else:
       print(f"output connection with ID {other_object_id} not found for removal.")
+

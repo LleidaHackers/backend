@@ -1,11 +1,25 @@
+from dataclasses import dataclass
 from BaseModule import BaseModule
 
-class WaterSupplyBase(BaseModule):
-  # Consumed/Produced resources
-  consumedWaterConn: int
-  producedFWater: int
-  color: str
+@dataclass
+class WaterSupplyInputs:
+    waterConnection: int = 0
 
+@dataclass
+class WaterSupplyOutputs:
+    freshWater: int = 0
+
+class WaterSupplyBase(BaseModule):
+    def __init__(self, name: str):
+        super().__init__(name)
+        # Consumed/Produced resources
+        self.consumedWaterConn: int = 0
+        self.producedFWater: int = 0
+        self.color: str = ""
+        
+        # Current state using dataclasses
+        self.current_inputs: WaterSupplyInputs = WaterSupplyInputs()
+        self.current_outputs: WaterSupplyOutputs = WaterSupplyOutputs()
 
 class WaterSupply_100(WaterSupplyBase):
   def __init__(self, name):

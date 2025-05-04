@@ -1,15 +1,33 @@
+from dataclasses import dataclass
 from BaseModule import BaseModule
 
-class DataRackBase(BaseModule):
-  # Consumed/Produced resources
-  consumedPower: int
-  consumedCWater: int
-  consumedInternalNet: int
-  producedDWater: int
-  producedDataStorage: int
-  color: str
-  
+@dataclass
+class DataRackInputs:
+    usablePower: int = 0
+    chilledWater: int = 0
+    internalNetwork: int = 0
 
+@dataclass
+class DataRackOutputs:
+    distilledWater: int = 0
+    dataStorage: int = 0
+
+class DataRackBase(BaseModule):
+    def __init__(self, name: str):
+        super().__init__(name)
+        # Resource consumption/production
+        self.consumedPower: int = 0
+        self.consumedCWater: int = 0
+        self.consumedInternalNet: int = 0
+        self.producedDWater: int = 0
+        self.producedDataStorage: int = 0
+        self.color: str = ""
+        
+        # Current state using dataclasses
+        self.current_inputs = DataRackInputs()
+        self.current_outputs = DataRackOutputs()
+        
+        
 class DataRack_100(DataRackBase):
   def __init__(self, name):
     super().__init__(name)
