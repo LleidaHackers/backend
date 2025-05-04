@@ -19,7 +19,7 @@ services:
     restart: unless-stopped
     ports:
       - "1883:1883"  # MQTT default port
-      - "9001:9001"  # Websocket port (optional)
+      - "8080:8080"  # Websocket port (optional)
     volumes:
       - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
     environment:

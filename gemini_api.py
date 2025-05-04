@@ -2,6 +2,14 @@ from google import genai
 import os
 import requests
 from dotenv import load_dotenv
+import json
+
+# Abrir y leer el archivo JSON
+with open("data.json", "r") as file:
+    data = json.load(file)
+
+# Ahora puedes usar los datos como un diccionario de Python
+print(data)
 
 # Cargar variables de entorno desde .env
 load_dotenv()

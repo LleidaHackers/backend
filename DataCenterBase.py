@@ -12,5 +12,7 @@ class DataCenterBase:
     self.waterConnection = waterConnection
     self.spaceX = spaceX
     self.spaceY = spaceY
+    self.connectedIn = [] # List of ids of connected modules
+    self.connectedOut = [] # List of ids of connected modulesceY
     self.connectedIn = []
     self.connectedOut = []

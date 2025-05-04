@@ -1,7 +1,7 @@
 from DataCenterBase import DataCenterBase
 
 class Supercomputer(DataCenterBase):
-  def __init__(self):  
-    super().__init__(self, gridConnection=0, waterConnection=0, spaceX=2000, spaceY=1000)
+  def __init__(self, gridConnection, waterConnection, spaceX, spaceY):  
+    super().__init__(self, gridConnection, waterConnection, spaceX, spaceY)
     self.usablePower : int = 0     # minimize
-    self.processing: int = 0       # maximize
+    self.processing: int = 0       # maximize  # maximize
