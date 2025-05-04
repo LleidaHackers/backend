@@ -13,4 +13,4 @@ class DataCenterBase:
     self.spaceX = spaceX
     self.spaceY = spaceY
     self.connectedIn = [] # List of ids of connected modules
-    self.connectedOut = [] # List of ids of connected modules
+    self.connectedOut = []

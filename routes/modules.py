@@ -26,6 +26,49 @@ def get_available_modules():
         data = json.load(f)
     return data
 
+
+
+
+@router.get("/all")
+def get_modules():
+    modules_cleaned = []
+    for module in module_collection.find():
+        raw_data = module.get("data", "")
+        print(f"raw_data: {raw_data}")
+        
+        # Si raw_data es un string, intenta convertirlo a un diccionario
+        if isinstance(raw_data, str):
+            if raw_data.startswith("root="):
+                raw_data = raw_data[len("root="):]
+                
+            try:
+                # Intenta convertir la cadena a un diccionario usando ast.literal_eval
+                parsed_data = ast.literal_eval(raw_data)
+                if not isinstance(parsed_data, dict):
+                    parsed_data = {}  # Si no es un diccionario, asigna un diccionario vacío
+            except Exception as e:
+                parsed_data = {"error": "Invalid data format", "details": str(e)}
+        else:
+            # Si raw_data ya es un diccionario, no lo modificamos
+            parsed_data = raw_data
+
+        # Si parsed_data es un diccionario, procedemos a usar get()
+        if isinstance(parsed_data, dict):
+            nodes = parsed_data.get("nodes", [])
+            edges = parsed_data.get("edges", [])
+        else:
+            nodes = []
+            edges = []
+
+        # Añadir los datos procesados a la lista de módulos
+        modules_cleaned.append({
+            "id": module.get("id"),
+            "nodes": nodes,
+            "edges": edges,
+            # "type": module.get("type"),
+        })
+    return modules_cleaned
+
 @router.post("/{id}")
 def save_module(id: str, data: ModuleData):
     # Aquí puedes guardar el módulo en la base de datos
@@ -62,49 +105,6 @@ def get_module(id: str):
         return JSONResponse(content=parsed_data)
 
     return JSONResponse(content={"error": "Module not found"}, status_code=404)
-
-
-
-@router.get("/all")
-def get_all_modules():
-    modules_cleaned = []
-
-    for module in module_collection.find():
-        raw_data = module.get("data", "")
-        
-        # Si raw_data es un string, intenta convertirlo a un diccionario
-        if isinstance(raw_data, str):
-            if raw_data.startswith("root="):
-                raw_data = raw_data[len("root="):]
-                
-            try:
-                # Intenta convertir la cadena a un diccionario usando ast.literal_eval
-                parsed_data = ast.literal_eval(raw_data)
-                if not isinstance(parsed_data, dict):
-                    parsed_data = {}  # Si no es un diccionario, asigna un diccionario vacío
-            except Exception as e:
-                parsed_data = {"error": "Invalid data format", "details": str(e)}
-        else:
-            # Si raw_data ya es un diccionario, no lo modificamos
-            parsed_data = raw_data
-
-        # Si parsed_data es un diccionario, procedemos a usar get()
-        if isinstance(parsed_data, dict):
-            nodes = parsed_data.get("nodes", [])
-            edges = parsed_data.get("edges", [])
-        else:
-            nodes = []
-            edges = []
-
-        # Añadir los datos procesados a la lista de módulos
-        modules_cleaned.append({
-            "id": module.get("id"),
-            "nodes": nodes,
-            "edges": edges
-        })
-
-    return JSONResponse(modules_cleaned)
-
 
 @router.delete("/{id}")
 def delete_module(id: str):
