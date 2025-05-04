@@ -153,7 +153,9 @@ def parseDataCenter(data):
     """
     Parses the data center data and returns a DataCenter object.
     """
-    from DataCenters import Server_Square, Dense_Storage, Supercomputer
+    import DataCenters.Server_Square as Server_Square
+    import DataCenters.Dense_Storage as Dense_Storage
+    import DataCenters.Supercomputer as Supercomputer
     type = data['id'].split('-')[0]
     new_object = None
     name = data['data']['label'].split('\n')[0]

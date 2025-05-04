@@ -4,11 +4,13 @@ class DataCenterBase:
   waterConnection: int
   spaceX: int
   spaceY: int
-  modules: list
+  connectedIn: list[str] # List of ids of connected modules
+  connectedOut: list[str] # List of ids of connected modules
 
   def __init__(self, gridConnection, waterConnection, spaceX, spaceY):
     self.gridConnection = gridConnection
     self.waterConnection = waterConnection
     self.spaceX = spaceX
     self.spaceY = spaceY
-    self.modules = []
+    self.connectedIn = []
+    self.connectedOut = []
