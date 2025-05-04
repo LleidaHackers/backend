@@ -8,7 +8,7 @@ router = APIRouter()
 @router.get("/")
 def get_gemini():
     solution = generate_response()
-
+    
     # Extraer texto del contenido generado
     try:
         text = solution.text  # Acceso directo si es un objeto de Gemini

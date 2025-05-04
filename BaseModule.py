@@ -12,9 +12,9 @@ class BaseModule:
   connectedIn: list[str] # List of ids of connected modules
   connectedOut: list[str] # List of ids of connected modules
 
-  def __init__(self, name):
 
   def __init__(self, name):
+    self.id=0
     self.name = name
     self.posX = 0
     self.posY = 0

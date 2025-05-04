@@ -6,9 +6,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from typing import List
 from ortools.linear_solver import pywraplp
 from BaseModule import BaseModule
-from Modules.Server_Rack import  ServerRack_500
-from Modules.Water_Chiller import WaterChiller_400
-from Modules.Transformer import Transformer_100
+
 def place_blocks_on_grid(blocks, grid_width, grid_height):
     solver = pywraplp.Solver.CreateSolver('SCIP')
     if not solver:
@@ -71,7 +69,8 @@ def solve(modules : List[BaseModule],grid_width,grid_heigh) -> List[BaseModule]:
 
     if positions:
         for i, pos in enumerate(positions):
-            modules[i].setPos(pos[0],pos[1])
+            modules[i].posX = pos[0]
+            modules[i].posY = pos[1]
             
         return modules
     else:
@@ -81,7 +80,7 @@ def solve(modules : List[BaseModule],grid_width,grid_heigh) -> List[BaseModule]:
 
 
 def modules_to_2d(modules: List[BaseModule], grid_width: int = 0, grid_height: int = 0) -> str:
-
+    print(modules[5].posX)
     json_data = {
         "grid": {
             "width": grid_width,
@@ -105,12 +104,12 @@ def modules_to_2d(modules: List[BaseModule], grid_width: int = 0, grid_height: i
             for module in modules
         ]
     }
-    #print(json.dumps(json_data, indent=2))
+    print(json.dumps(json_data, indent=2))
     return json.dumps(json_data, indent=2)
 
 
         
         
-modules = solve([Transformer_100("asdf"),Transformer_100("asdf"),Transformer_100("asdf"),Transformer_100("asdf"),Transformer_100("asdf")],100,500)
-print(modules[4].posX)
-modules_to_2d(modules,100,500)
+#modules = solve([Transformer_100("asdf"),Transformer_100("asdf"),Transformer_100("asdf"),Transformer_100("asdf"),Transformer_100("asdf")],100,500)
+#print(modules[4].posX)
+#modules_to_2d(modules,100,500)
