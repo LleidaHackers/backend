@@ -1,4 +1,5 @@
 
+
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from routes import modules
@@ -31,3 +32,4 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+

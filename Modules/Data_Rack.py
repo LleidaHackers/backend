@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import math
 from BaseModule import BaseModule
 
 @dataclass
@@ -23,11 +24,31 @@ class DataRackBase(BaseModule):
         self.producedDataStorage: int = 0
         self.color: str = ""
         
-        # Current state using dataclasses
-        self.current_inputs = DataRackInputs()
-        self.current_outputs = DataRackOutputs()
-        
-        
+        self.current_inputs = {
+            "usablePower": 0, # Default value
+            "internalNetwork": 0 , # Default value
+            "chilledWater": 0  # Default value
+        }
+        self.current_outputs = {
+            "distilledWater": 0, # Default value
+            "dataStorage": 0  # Default value
+        }
+    def update_outputs(self):
+      ##print(f"inputs->{self.current_inputs}")
+      self.current_outputs["distilledWater"] = self.current_inputs["chilledWater"]
+      usable_power = float(self.current_inputs["usablePower"])
+      consumed_power = float(self.consumedPower)
+      produced_net = float(self.producedDataStorage)
+      ##print(f"astasdata {usable_power / consumed_power}")
+      # Perform calculations with floats
+      if(usable_power>consumed_power):
+        result =  produced_net
+      else:
+         result = ((usable_power / consumed_power)) * produced_net
+      # Convert final result to integer
+      self.current_outputs["dataStorage"] = math.trunc(result)
+      
+      
 class DataRack_100(DataRackBase):
   def __init__(self, name):
     super().__init__(name)
