@@ -1,5 +1,8 @@
+from threading import Thread
+import time
 from BaseModule import BaseModule
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
+from paho.mqtt import client as mqtt_client
 
 @dataclass
 class WaterChillerInputs:
@@ -12,18 +15,33 @@ class WaterChillerOutputs:
 
 class WaterChillerBase(BaseModule):
     def __init__(self, name: str):
-        super().__init__(name)
+        super().__init__(name)  
         # Resource tracking
         self.consumedDWater: int = 0  # Distilled water consumption
         self.consumedPower: int = 0   # Power consumption
         self.producedCWater: int = 0  # Chilled water production
+       
         self.color: str = ""
         
         # Current state using dataclasses
-        self.current_inputs: WaterChillerInputs = WaterChillerInputs()
-        self.current_outputs: WaterChillerOutputs = WaterChillerOutputs()
+        self.current_inputs= {
+            "distilledWater": 0,  # Default value
+            "usablePower":  0
+        }
+        self.current_outputs = {
+            "chilledWater": self.current_inputs["distilledWater"]  # Default value
+        }
+      
+    def in_out_map(self, input) -> str:
+      if(input == "distilledWater"):
+        return "chilledWater"
+      else:
+        None
+    def update_outputs(self):
+      ##print(f"inputs->{self.current_inputs}")
+      self.current_outputs["chilledWater"] = self.current_inputs["distilledWater"]
     
-
+  
 class WaterChiller_100(WaterChillerBase):
   def __init__(self, name):
     super().__init__(name)
