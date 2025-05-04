@@ -127,9 +127,7 @@ def get_parsed_by_id(id: str):
             parsed_data = raw_data
         parsedObjects = []
         for node in parsed_data.get("nodes", []):
-            print(node)
             parsedObjects.append(parseModule(node))
-        return parsedObjects
         for edge in parsed_data.get("edges", []):
             source = edge.get("source")
             target = edge.get("target")

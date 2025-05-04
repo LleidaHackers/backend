@@ -1,7 +1,5 @@
-from random import randint
-
 class BaseModule:
-  id: int # Given from frontend
+  id: str # Given from frontend
   name: str
   # Position, will vary in the future (after solving for positioning)
   posX: int
