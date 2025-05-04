@@ -1,7 +1,6 @@
-class DenseStorage:
-  gridConnection: int = 0 # unlimited, start at 0 then grow
-  waterConnection: int = 0 # unlimited, start at 0 then grow
-  spaceX: int = 0         # minimize
-  spaceY: int = 0         # minimize
-  dataStorage : int = 0   # maximize
-  price: int = 5000000    # max
+from DataCenterBase import DataCenterBase
+class DenseStorage(DataCenterBase):
+  def __init__(self):
+    super().__init__(gridConnection=0, waterConnection=0, spaceX=0, spaceY=0)
+    self.dataStorage : int = 0   # maximize
+    self.price: int = 5000000    # max

@@ -1,7 +1,7 @@
-class Supercomputer:
-  gridConnection: int = 0   # unlimited
-  waterConnection: int = 0  # unlimited
-  usablePower : int = 0     # minimize
-  processing: int = 0       # maximize
-  spaceX: int = 2000        # max
-  spaceY: int = 1000        # max
+from DataCenterBase import DataCenterBase
+
+class Supercomputer(DataCenterBase):
+  def __init__(self):  
+    super().__init__(self, gridConnection=0, waterConnection=0, spaceX=2000, spaceY=1000)
+    self.usablePower : int = 0     # minimize
+    self.processing: int = 0       # maximize

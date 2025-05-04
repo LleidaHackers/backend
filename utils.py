@@ -170,6 +170,7 @@ def parseDataCenter(data):
 
     return new_object if new_object is not None else f"Something went wrong while parsing the following data center data: {name}."
 
+
 def parseModule(data):
     """
     Parses the module data and returns the corresponding object, with only the correct attributes.
