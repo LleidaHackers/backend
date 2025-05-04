@@ -1,3 +1,4 @@
+
 from abc import abstractmethod
 from dataclasses import dataclass
 import random
@@ -14,6 +15,7 @@ class BaseModule(Thread):
   # Generate a Client ID with the publish prefix.
 
   id: int
+
   name: str
   # Position, will vary in the future (after solving for positioning)
   posX: int
@@ -22,11 +24,13 @@ class BaseModule(Thread):
   sizeX: int
   sizeY: int
   price: int
-  # Connection with other modules
-  connections: dict 
+
+  connectedIn: list[str] # List of ids of connected modules
+  connectedOut: list[str] # List of ids of connected modules
 
 
   def __init__(self, name):
+
     super().__init__(daemon=True)     
     self.id = random.randint(0, 1000000)  # Random ID for the module
     self.name = name
@@ -154,3 +158,4 @@ class BaseModule(Thread):
       self.connections['output'].remove(other_object_id)
     else:
       print(f"output connection with ID {other_object_id} not found for removal.")
+
