@@ -15,13 +15,3 @@ class DatacenterBase:
     self.spaceX = spaceX
     self.spaceY = spaceY
     self.modules = []
-
-  def addModule(self, module):
-    if module in self.modules:
-      raise ValueError("Module already exists in the datacenter.")
-    self.modules.append(module)
-  
-  def removeModule(self, module):
-    if module not in self.modules:
-      raise ValueError("Module not found in the datacenter.")
-    self.modules.remove(module)

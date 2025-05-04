@@ -159,11 +159,11 @@ def parseDataCenter(data):
     name = data['data']['label'].split('\n')[0]
     match type:
         case 'server_square':
-            new_object = Server_Square(name)
+            new_object = Server_Square(3, 1, 1000, 500)
         case 'dense_storage':
-            new_object = Dense_Storage(name)
+            new_object = Dense_Storage(999, 999, 0, 0)
         case 'supercomputer':
-            new_object = Supercomputer(name)
+            new_object = Supercomputer(999, 999, 2000, 1000)
         case _:
             raise ValueError(f"This item is not a data center: {name}")
     new_object.id = data['id']
