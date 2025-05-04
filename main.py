@@ -80,9 +80,11 @@ data_rack_500.start()
 
 
 try:
-    time.sleep(10)  # Let them run for 5 seconds
-    transformer_5000.low=True
-    time.sleep(20)
+    while(True):
+        time.sleep(10)  # Let them run for 5 seconds
+        transformer_5000.low=True
+        time.sleep(10) 
+        transformer_5000.low=False
 finally:
     transformer_100.stop()
     network_rack_50.stop()
