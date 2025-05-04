@@ -68,7 +68,7 @@ class Transformer_100(TransformerBase):
         self.price = 1000
         self.consumedGridConn = 1
         self.producedPower = 100
-        self.color = "00ff4a"
+        self.color = "00ff4a"   
 
 class Transformer_1000(TransformerBase):
     def __init__(self, name):

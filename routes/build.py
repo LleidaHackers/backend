@@ -4,6 +4,7 @@ from utils import parseModule  # Asegúrate de que `parseModule` esté accesible
 import ast
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
+from Connection import Connection
 
 from pymongo import MongoClient
 client = MongoClient("mongodb://localhost:27017/")
@@ -100,7 +101,7 @@ def build_sim():
             target = edge.get("target")
             for obj in parsedObjects:
                 if obj.id == source and target not in obj.connectedOut:
-                    obj.connectedOut.append(target)
+                    obj.connectedOut.append((target ,))
                 elif obj.id == target and source not in obj.connectedIn:
                     obj.connectedIn.append(source)
     return parsedObjects
@@ -133,9 +134,11 @@ def get_parsed_by_id(id: str):
             target = edge.get("target")
             for obj in parsedObjects:
                 if obj.id == source and target not in obj.connectedOut:
-                    obj.connectedOut.append(target)
+                    resource = edge.get("data").get("label")
+                    obj.conn_outputs.append(Connection(resource, target))
                 elif obj.id == target and source not in obj.connectedIn:
-                    obj.connectedIn.append(source)
+                    resource = edge.get("data").get("label")
+                    obj.conn_inputs.append(Connection(resource, source))
         return parsedObjects
 
 
