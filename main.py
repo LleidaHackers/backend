@@ -1,139 +1,34 @@
-import time
-from Modules.Transformer import Transformer_100, Transformer_1000, Transformer_5000
-from Modules.Water_Supply import WaterSupply_100, WaterSupply_500
-from Modules.Water_Treatment import WaterTreatment_50, WaterTreatment_250, WaterTreatment_500
-from Modules.Water_Chiller import WaterChiller_100, WaterChiller_400
-from Modules.Network_Rack import NetworkRack_50, NetworkRack_100, NetworkRack_200
-from Modules.Server_Rack import ServerRack_100, ServerRack_200, ServerRack_500
-from Modules.Data_Rack import DataRack_100, DataRack_250, DataRack_500
-from Connection import Connection
-# Create an instance of each module
-water_chiller_100 = WaterChiller_100("9")
-transformer_100 = Transformer_100("1")
-transformer_1000 = Transformer_1000("2")
-transformer_5000 = Transformer_5000("3")
-water_supply_100 = WaterSupply_100("4")
-water_supply_500 = WaterSupply_500("5")
-water_treatment_50 = WaterTreatment_50("6")
-water_treatment_250 = WaterTreatment_250("7")
-water_treatment_500 = WaterTreatment_500("8")
-water_chiller_100 = WaterChiller_100("9")
-water_chiller_400 = WaterChiller_400("10")
-network_rack_50 = NetworkRack_50("11")
-network_rack_100 = NetworkRack_100("12")
-network_rack_200 = NetworkRack_200("13")
-server_rack_100 = ServerRack_100("14")
-server_rack_200 = ServerRack_200("15")
-server_rack_500 = ServerRack_500("16")
-data_rack_100 = DataRack_100("17")
-data_rack_250 = DataRack_250("18")
-data_rack_500 = DataRack_500("19")
 
-# Print the details of each module
-#print("Transformer 100:")
-#print(f"Size: {transformer_100.sizeX}x{transformer_100.sizeY}, Price: {transformer_100.price}, Consumed Grid Connection: {transformer_100.consumedGridConn}, Produced Power: {transformer_100.producedPower}")
-#print(transformer_100.current_inputs)
-transformer_100.current_inputs.gridConnection = 12341
-#print(transformer_100.current_inputs)
-
-#print("Transformer 1000:")
-#print(f"Size: {transformer_1000.sizeX}x{transformer_1000.sizeY}, Price: {transformer_1000.price}, Consumed Grid Connection: {transformer_1000.consumedGridConn}, Produced Power: {transformer_1000.producedPower}")
-#print()
-#print("Transformer 5000:")
-#print(f"Size: {transformer_5000.sizeX}x{transformer_5000.sizeY}, Price: {transformer_5000.price}, Consumed Grid Connection: {transformer_5000.consumedGridConn}, Produced Power: {transformer_5000.producedPower}")
-#print()
-#print("Water Supply 100:")
-#print(f"Size: {water_supply_100.sizeX}x{water_supply_100.sizeY}, Price: {water_supply_100.price}, Produced Fresh Water: {water_supply_100.producedFWater}, Consumed Water Connection: {water_supply_100.consumedWaterConn}")
-#print()
-#print("Water Supply 500:")
-#print(f"Size: {water_supply_500.sizeX}x{water_supply_500.sizeY}, Price: {water_supply_500.price}, Produced Fresh Water: {water_supply_500.producedFWater}, Consumed Water Connection: {water_supply_500.consumedWaterConn}")
-#print()
-#print("Water Treatment 50:")
-#print(f"Size: {water_treatment_50.sizeX}x{water_treatment_50.sizeY}, Price: {water_treatment_50.price}, Consumed Fresh Water: {water_treatment_50.consumedFWater}, Consumed Power: {water_treatment_50.consumedPower}, Produced Distilled Water: {water_treatment_50.producedDWater}")
-#print()
-#print("Water Treatment 250:")
-#print(f"Size: {water_treatment_250.sizeX}x{water_treatment_250.sizeY}, Price: {water_treatment_250.price}, Consumed Fresh Water: {water_treatment_250.consumedFWater}, Consumed Power: {water_treatment_250.consumedPower}, Produced Distilled Water: {water_treatment_250.producedDWater}")
-#print()
-#print("Water Treatment 500:")
-#print(f"Size: {water_treatment_500.sizeX}x{water_treatment_500.sizeY}, Price: {water_treatment_500.price}, Consumed Fresh Water: {water_treatment_500.consumedFWater}, Consumed Power: {water_treatment_500.consumedPower}, Produced Distilled Water: {water_treatment_500.producedDWater}")
-#print()
-#print("Water Chiller 100:")
-#print(f"Size: {water_chiller_100.sizeX}x{water_chiller_100.sizeY}, Price: {water_chiller_100.price}, Consumed Power: {water_chiller_100.consumedPower}, Produced Chilled Water: {water_chiller_100.producedCWater}")
-#print()
-#print("Water Chiller 400:")
-#print(f"Size: {water_chiller_400.sizeX}x{water_chiller_400.sizeY}, Price: {water_chiller_400.price}, Consumed Power: {water_chiller_400.consumedPower}, Produced Chilled Water: {water_chiller_400.producedCWater}")
-#print()
-#print("Network Rack 50:")
-#print(f"Size: {network_rack_50.sizeX}x{network_rack_50.sizeY}, Price: {network_rack_50.price}, Consumed Power: {network_rack_50.consumedPower}, Consumed Chilled Water: {network_rack_50.consumedCWater}, Produced Internal Network: {network_rack_50.producedInternalNet}, Produced Fresh Water: {network_rack_50.producedFWater}")
-
-#print()
-#print()
-#print("Network Rack 100:")
-#print(f"Size: {network_rack_100.sizeX}x{network_rack_100.sizeY}, Price: {network_rack_100.price}, Consumed Power: {network_rack_100.consumedPower}, Consumed Chilled Water: {network_rack_100.consumedCWater}, Produced Internal Network: {network_rack_100.producedInternalNet}, Produced Fresh Water: {network_rack_100.producedFWater}")
-#print()
-#print("Network Rack 200:")
-#print(f"Size: {network_rack_200.sizeX}x{network_rack_200.sizeY}, Price: {network_rack_200.price}, Consumed Power: {network_rack_200.consumedPower}, Consumed Chilled Water: {network_rack_200.consumedCWater}, Produced Internal Network: {network_rack_200.producedInternalNet}, Produced Fresh Water: {network_rack_200.producedFWater}")
-#print()
-#print("Server Rack 100:")
-#print(f"Size: {server_rack_100.sizeX}x{server_rack_100.sizeY}, Price: {server_rack_100.price}, Consumed Power: {server_rack_100.consumedPower}, Consumed Chilled Water: {server_rack_100.consumedCWater}, Consumed Internal Network: {server_rack_100.consumedInternalNet}, Produced Distilled Water: {server_rack_100.producedDWater}, Produced Processing: {server_rack_100.producedProcessing}, Produced External Network: {server_rack_100.producedExternalNet}")
-#print()
-#print("Server Rack 200:")
-#print(f"Size: {server_rack_200.sizeX}x{server_rack_200.sizeY}, Price: {server_rack_200.price}, Consumed Power: {server_rack_200.consumedPower}, Consumed Chilled Water: {server_rack_200.consumedCWater}, Consumed Internal Network: {server_rack_200.consumedInternalNet}, Produced Distilled Water: {server_rack_200.producedDWater}, Produced Processing: {server_rack_200.producedProcessing}, Produced External Network: {server_rack_200.producedExternalNet}")
-#print()
-#print("Server Rack 500:")
-#print(f"Size: {server_rack_500.sizeX}x{server_rack_500.sizeY}, Price: {server_rack_500.price}, Consumed Power: {server_rack_500.consumedPower}, Consumed Chilled Water: {server_rack_500.consumedCWater}, Consumed Internal Network: {server_rack_500.consumedInternalNet}, Produced Distilled Water: {server_rack_500.producedDWater}, Produced Processing: {server_rack_500.producedProcessing}, Produced External Network: {server_rack_500.producedExternalNet}")
-#print()
-#print("Data Rack 100:")
-#print(f"Size: {data_rack_100.sizeX}x{data_rack_100.sizeY}, Price: {data_rack_100.price}, Consumed Power: {data_rack_100.consumedPower}, Consumed Chilled Water: {data_rack_100.consumedCWater}, Consumed Internal Network: {data_rack_100.consumedInternalNet}, Produced Distilled Water: {data_rack_100.producedDWater}, Produced Processing: {data_rack_100.producedDataStorage}")
-#print()
-#print("Data Rack 250:")
-#print(f"Size: {data_rack_250.sizeX}x{data_rack_250.sizeY}, Price: {data_rack_250.price}, Consumed Power: {data_rack_250.consumedPower}, Consumed Chilled Water: {data_rack_250.consumedCWater}, Consumed Internal Network: {data_rack_250.consumedInternalNet}, Produced Distilled Water: {data_rack_250.producedDWater}, Produced Processing: {data_rack_250.producedDataStorage}")
-#print()
-#print("Data Rack 500:")
-#print(f"Size: {data_rack_500.sizeX}x{data_rack_500.sizeY}, Price: {data_rack_500.price}, Consumed Power: {data_rack_500.consumedPower}, Consumed Chilled Water: {data_rack_500.consumedCWater}, Consumed Internal Network: {data_rack_500.consumedInternalNet}, Produced Distilled Water: {data_rack_500.producedDWater}, Produced Processing: {data_rack_500.producedDataStorage}")
-#print()
-#print("All modules have been created and their details have been printed.")
-
-#print(transformer_100.id)
-#network_rack_50.conn_inputs.append(Connection("usablePower",transformer_100.id))
-#water_chiller_100.conn_inputs.append(Connection("distilledWater",water_supply_500.id))
-#water_chiller_100.conn_inputs.append(Connection("usablePower",transformer_100.id))
-#water_chiller_100.start()
-water_treatment_250.conn_inputs.append(Connection("freshWater",water_supply_500.id))
-water_treatment_250.conn_inputs.append(Connection("usablePower",transformer_100.id))
-water_chiller_100.conn_inputs.append(Connection("distilledWater",water_treatment_250.id))
-water_chiller_100.conn_inputs.append(Connection("usablePower",transformer_100.id))
-network_rack_100.conn_inputs.append(Connection("chilledWater",water_chiller_100.id))
-network_rack_100.conn_inputs.append(Connection("usablePower",transformer_100.id))
-server_rack_100.conn_inputs.append(Connection("usablePower",transformer_100.id))
-server_rack_100.conn_inputs.append(Connection("chilledWater",water_chiller_100.id))
-server_rack_100.conn_inputs.append(Connection("internalNetwork",network_rack_100.id))
-data_rack_100.conn_inputs.append(Connection("usablePower",transformer_100.id))
-data_rack_100.conn_inputs.append(Connection("chilledWater",water_chiller_100.id))
-data_rack_100.conn_inputs.append(Connection("internalNetwork",network_rack_100.id))
+from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
+from routes import modules
+from routes import build
+from routes import data_center
+from routes import workflow
+from routes import weather
+from routes import gemini
+from fastapi.middleware.cors import CORSMiddleware
 
 
+app = FastAPI()
+
+@app.get("/")
+def redirect_to_docs():
+    return RedirectResponse(url="/docs")
+
+app.include_router(modules.router, prefix="/modules", tags=["modules"])
+app.include_router(workflow.router, prefix="/workflow", tags=["workflow"])
+app.include_router(data_center.router, prefix="/data-center", tags=["data-center"])
+app.include_router(build.router, prefix="/build", tags=["build simulation"])
+app.include_router(weather.router, prefix="/weather", tags=["weather"])
+app.include_router(gemini.router, prefix="/gemini", tags=["gemini"])
 
 
-transformer_100.name="transformer"
-transformer_100.start()
-water_supply_500.name="water_supply"
-water_supply_500.start()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins='*',
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-water_treatment_250.name="water_treatment"
-water_treatment_250.start()
-water_chiller_100.name="water_chiller_100"
-water_chiller_100.start()
-
-network_rack_100.name="network_rack_100"
-network_rack_100.start()
-server_rack_100.name="server_rack_100"
-server_rack_100.start()
-data_rack_100.name="data_rack_100"
-data_rack_100.start()
-try:
-    time.sleep(1000000)  # Let them run for 5 seconds
-finally:
-    transformer_100.stop()
-    network_rack_50.stop()
-    #print("Transformers stopped.")
