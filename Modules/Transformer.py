@@ -21,13 +21,15 @@ class TransformerBase(BaseModule, Thread):
         self.current_inputs : TransformerInputs = TransformerInputs()
         self.current_outputs : TransformerOutputs = TransformerOutputs()
         self.running = False
-        
+        self.low = False
     def generate(self) -> float:
         """Simulate one second of power output with ±5% variation."""
         error = random.uniform(-0.05, 0.05)
         output = self.producedPower * (1 + error)
         self.current_outputs.usablePower = int(output)
         return output
+    
+    
     
     def run(self):
         """Start background simulation loop."""
@@ -38,11 +40,19 @@ class TransformerBase(BaseModule, Thread):
         #self.subscribe(client,f"/transformer/{self.id}")
         outputs = [field.name for field in fields(TransformerOutputs)]
         while self.running:
+            
             for output in outputs:
-              self.current_outputs.usablePower = self.generate()
-              self.publish(client,f"/{output}/{self.id}",self.current_outputs.usablePower)
-              ##print(f"[{self.name}] {output}: {self.current_outputs.usablePower:.2f} kW")
-              
+                if(not self.low):
+                    print("high")
+                    self.current_outputs.usablePower = self.generate()
+                    self.publish(client,f"/{output}/{self.id}",self.current_outputs.usablePower)
+                    
+                else:
+                    print("low")
+                    self.current_outputs.usablePower = 36
+                    self.publish(client,f"/{output}/{self.id}",self.current_outputs.usablePower)
+            ##print(f"[{self.name}] {output}: {self.current_outputs.usablePower:.2f} kW")
+            
             time.sleep(1)
              
               
