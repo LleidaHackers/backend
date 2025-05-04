@@ -37,14 +37,14 @@ class WaterSupplyBase(BaseModule, Thread):
         self.running = True
         client = self.connect_mqtt()
         client.loop_start()
-        #print(f"/transformer/{self.id}")
+        ##print(f"/transformer/{self.id}")
         #self.subscribe(client,f"/transformer/{self.id}")
         outputs = [field.name for field in fields(WaterSupplyOutputs)]
         while self.running:
             for output in outputs:
               self.current_outputs.freshWater = self.generate()
               self.publish(client,f"/{output}/{self.id}",self.current_outputs.freshWater)
-              #print(f"[{self.name}] {output}: {self.current_outputs.usablePower:.2f} kW")
+              ##print(f"[{self.name}] {output}: {self.current_outputs.usablePower:.2f} kW")
               
             time.sleep(1)
              

@@ -20,12 +20,17 @@ class WaterTreatmentBase(BaseModule):
         self.color: str = ""
         
         # Current state using dataclasses
-        self.current_inputs = WaterTreatmentInputs()
+        self.current_inputs = {
+            "freshWater": 0,  # Default value
+            "usablePower": 0
+        }
         self.current_outputs = {
             "distilledWater": 0  # Default value
         }
+    def update_outputs(self):
+      #print(f"inputs->{self.current_inputs}")
+      self.current_outputs["distilledWater"] = self.current_inputs["freshWater"]
       
-        
     def in_out_map(self, input) -> str:
       if(input == "freshWater"):
         return "distilledWater"

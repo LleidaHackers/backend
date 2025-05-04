@@ -24,9 +24,12 @@ class WaterChillerBase(BaseModule):
         self.color: str = ""
         
         # Current state using dataclasses
-        self.current_inputs: WaterChillerInputs = WaterChillerInputs()
+        self.current_inputs= {
+            "distilledWater": 0,  # Default value
+            "usablePower":  0
+        }
         self.current_outputs = {
-            "chilledWater": 0  # Default value
+            "chilledWater": self.current_inputs["distilledWater"]  # Default value
         }
       
     def in_out_map(self, input) -> str:
@@ -34,7 +37,9 @@ class WaterChillerBase(BaseModule):
         return "chilledWater"
       else:
         None
-
+    def update_outputs(self):
+      ##print(f"inputs->{self.current_inputs}")
+      self.current_outputs["chilledWater"] = self.current_inputs["distilledWater"]
     
   
 class WaterChiller_100(WaterChillerBase):

@@ -34,14 +34,14 @@ class TransformerBase(BaseModule, Thread):
         self.running = True
         client = self.connect_mqtt()
         client.loop_start()
-        #print(f"/transformer/{self.id}")
+        ###print(f"/transformer/{self.id}")
         #self.subscribe(client,f"/transformer/{self.id}")
         outputs = [field.name for field in fields(TransformerOutputs)]
         while self.running:
             for output in outputs:
               self.current_outputs.usablePower = self.generate()
               self.publish(client,f"/{output}/{self.id}",self.current_outputs.usablePower)
-              #print(f"[{self.name}] {output}: {self.current_outputs.usablePower:.2f} kW")
+              ##print(f"[{self.name}] {output}: {self.current_outputs.usablePower:.2f} kW")
               
             time.sleep(1)
              
@@ -55,9 +55,9 @@ class TransformerBase(BaseModule, Thread):
     def subscribe(self, client: mqtt_client, topic):
     # First call parent's implementation
       super().subscribe(client, topic)
-      def child_on_message(client, userdata, msg):
-          print(f"AAAAAAAA message handling: {msg.payload.decode()}")
-      client.on_message = child_on_message
+      #def child_on_message(client, userdata, msg):
+          #print(f"AAAAAAAA message handling: {msg.payload.decode()}")
+      #client.on_message = child_on_message
 # Subclasses stay the same, just inherit threading via TransformerBase
 
 class Transformer_100(TransformerBase):

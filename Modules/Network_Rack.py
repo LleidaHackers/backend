@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import math
 import random
 from threading import Thread
 import time
@@ -26,47 +27,35 @@ class NetworkRackBase(BaseModule, Thread):
         self.color: str = ""
         self.running = False
         # Current state using dataclasses
-        self.current_inputs = NetworkRackInputs()
+        self.current_inputs = {
+            "usablePower": 0, # Default value
+            "chilledWater": 0  # Default value
+        }
         self.current_outputs = {
             "internalNetwork": 0, # Default value
             "freshWater": 0  # Default value
         }
-
-        
+    def update_outputs(self):
+      ##print(f"inputs->{self.current_inputs}")
+      self.current_outputs["freshWater"] = self.current_inputs["chilledWater"]
+      usable_power = float(self.current_inputs["usablePower"])
+      consumed_power = float(self.consumedPower)
+      produced_net = float(self.producedInternalNet)
+      ##print(f"astasdata {usable_power / consumed_power}")
+      # Perform calculations with floats
+      if(usable_power>consumed_power):
+        result =  produced_net
+      else:
+         result = ((usable_power / consumed_power)) * produced_net
+      # Convert final result to integer
+      self.current_outputs["internalNetwork"] = math.trunc(result)
     def in_out_map(self, input) -> str:
       if(input == "chilledWater"):
         return "freshWater"
       else:
         None
         
-          
-    def run(self):
-        """Start background simulation loop."""
-        self.running = True
-        client = self.connect_mqtt()
-        client.loop_start()
-        #print(self.conn_inputs)
-        for connection in self.conn_inputs:
-          print(f"cons /{connection.type}/{connection.id}")
-          self.subscribe(client,f"/{connection.type}/{connection.id}")
-    
-        while self.running:
-            time.sleep(1)
-            
-        client.loop_stop()
-
-    def stop(self):
-        """Stop the simulation thread."""
-        
-        self.running = False
-        
-    def subscribe(self, client: mqtt_client, topic):
-    # First call parent's implementation
-      super().subscribe(client, topic)
-      def child_on_message(client, userdata, msg):
-          print(f"Enhanced message handling: {msg.payload.decode()}")
-          
-      client.on_message = child_on_message
+ 
         
 class NetworkRack_50(NetworkRackBase):
   def __init__(self, name):

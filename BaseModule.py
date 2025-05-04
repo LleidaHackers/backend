@@ -36,12 +36,21 @@ class BaseModule(Thread):
     self.conn_inputs : List[Connection]= []
     self.conn_outputs : List[Connection]= [] 
     self.current_outputs : dict
+    self.current_inputs : dict
     self.running = False
-  
+
     @abstractmethod
     def in_out_map(self, input_type: str) -> str:
         """All child classes must implement this"""
         pass
+      
+    @abstractmethod
+    def update_outputs(self, input_type: str) -> str:
+        """All child classes must implement this"""
+        pass
+  
+     
+  
   
   def connect_mqtt(self):
     def on_connect(client, userdata, flags, rc):
@@ -64,9 +73,6 @@ class BaseModule(Thread):
     return client
   
   def run(self):
-        if not hasattr(self, 'in_out_map'):
-          raise NotImplementedError(f"{self.__class__.__name__} must implement in_out_map method")
-        """Start background simulation loop."""
         self.running = True
         client = self.connect_mqtt()
         client.loop_start()
@@ -74,12 +80,13 @@ class BaseModule(Thread):
         topics = [] #[(f"/{self.conn_inputs[0].type}/{self.conn_inputs[0].id}",0),(f"/{self.conn_inputs[1].type}/{self.conn_inputs[1].id}",0),("Server3/kpi3",0)]
         for connection in self.conn_inputs:
           topics.append((f"/{connection.type}/{connection.id}",0))
-          
-        self.subscribe_child(client,topics,self.in_out_map)
+        
+        self.subscribe_child(client,topics)
         while self.running:
           for output in outputs:
-            print(f"on pub->{self.current_outputs}")
+            #print(f"on pub->{self.current_outputs}")
             self.publish(client,f"/{output}/{self.id}",self.current_outputs[output],self.__module__ )
+            
           time.sleep(1)
             
         client.loop_stop()
@@ -96,15 +103,18 @@ class BaseModule(Thread):
     client.on_message = on_message
     #client.on_message = on_message
   
-  def subscribe_child(self, client: mqtt_client, topic, in_out_map):
+  def subscribe_child(self, client: mqtt_client, topic):
     # First call parent's implementation
-      print(f"AAAAAAAAAAAAAA{topic}")
+      #print(f"AAAAAAAAAAAAAA{topic}")
       self.subscribe(client, topic)
+      #print(f"server:{self.id} topcis:{topic}")
       def child_on_message(client, userdata, msg):
-          print(f"[{self.__module__ }-{self.id}]Recieved: {msg.payload.decode()} from {msg.topic}")
-          print(str(topic).split("/")[1])
-          self.current_outputs[in_out_map(str(topic).split("/")[1])] = msg.payload.decode()
-          
+          #print(f"[{self.__module__ }-{self.id}]Recieved: {msg.payload.decode()} from {msg.topic}")
+          #print(str(msg.topic).split("/")[1])
+          #self.current_outputs[in_out_map(str(topic).split("/")[1])] = msg.payload.decode()
+          self.current_inputs[str(msg.topic).split("/")[1]] = msg.payload.decode()
+         
+          self.update_outputs()
           #print(f"aaaaa {self.current_outputs[in_out_map(str(topic).split("/")[1])]}")
       client.on_message = child_on_message    
   
@@ -113,10 +123,10 @@ class BaseModule(Thread):
       result = client.publish(topic, msg)
       # result: [0, 1]
       status = result[0]
-      if status == 0:
-          print(f"[{self.__module__}-{self.id}]Send: `{msg}` to topic `{topic}`")
-      else:
-          print(f"Failed to send message to topic {topic}")
+      # if status == 0:
+          #print(f"[{self.__module__}-{self.id}]Send: `{msg}` to topic `{topic}`")
+      #else:
+      #    print(f"Failed to send message to topic {topic}")
 
   def setInput(self, other_object_id):
     if other_object_id in self.connections['input']:
