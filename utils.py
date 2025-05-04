@@ -153,17 +153,17 @@ def parseDataCenter(data):
     """
     Parses the data center data and returns a DataCenter object.
     """
-    import DataCenters.Server_Square as Server_Square
-    import DataCenters.Dense_Storage as Dense_Storage
-    import DataCenters.Supercomputer as Supercomputer
+    from DataCenters.Server_Square import ServerSquare
+    from DataCenters.Dense_Storage import DenseStorage
+    from DataCenters.Supercomputer import Supercomputer
     type = data['id'].split('-')[0]
     new_object = None
     name = data['data']['label'].split('\n')[0]
     match type:
         case 'server_square':
-            new_object = Server_Square(3, 1, 1000, 500)
+            new_object = ServerSquare(3, 1, 1000, 500)
         case 'dense_storage':
-            new_object = Dense_Storage(999, 999, 0, 0)
+            new_object = DenseStorage(999, 999, 0, 0)
         case 'supercomputer':
             new_object = Supercomputer(999, 999, 2000, 1000)
         case _:
