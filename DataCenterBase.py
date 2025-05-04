@@ -1,4 +1,4 @@
-from random import randint
+from randoC import randint
 
 class DatacenterBase:
   id: int
