@@ -104,4 +104,40 @@ def build_sim():
                 elif obj.id == target and source not in obj.connectedIn:
                     obj.connectedIn.append(source)
     return parsedObjects
-        
+
+
+@router.get("/build/{id}")
+def get_parsed_by_id(id: str):
+    module = workflow_collection.find_one({"id": id})
+    if module:
+        raw_data = module.get("data", "")
+        if isinstance(raw_data, str):
+            # Intentamos quitar el prefijo "root=" si está presente
+            if raw_data.startswith("root="):
+                raw_data = raw_data[len("root="):]
+            
+            try:
+                parsed_data = ast.literal_eval(raw_data)
+            except Exception as e:
+                return JSONResponse(
+                    content={"error": "Invalid data format", "details": str(e)},
+                    status_code=500
+                )
+        else:
+            parsed_data = raw_data
+        parsedObjects = []
+        for node in parsed_data.get("nodes", []):
+            print(node)
+            parsedObjects.append(parseModule(node))
+        return parsedObjects
+        for edge in parsed_data.get("edges", []):
+            source = edge.get("source")
+            target = edge.get("target")
+            for obj in parsedObjects:
+                if obj.id == source and target not in obj.connectedOut:
+                    obj.connectedOut.append(target)
+                elif obj.id == target and source not in obj.connectedIn:
+                    obj.connectedIn.append(source)
+        return parsedObjects
+
+
