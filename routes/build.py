@@ -90,12 +90,18 @@ def build_sim():
             "edges": edges,
             # "type": module.get("type"),
         })
-    build_modules=[]
+    
+    parsedObjects = []  
     for module in modules_cleaned:
         for node in module.get("nodes", []):
-            o= parseModule(node)
-            build_modules.append(o)
-        
-    return build_modules
-
+            parsedObjects.append(parseModule(node))
+        for edge in module.get("edges", []):
+            source = edge.get("source")
+            target = edge.get("target")
+            for obj in parsedObjects:
+                if obj.id == source and target not in obj.connectedOut:
+                    obj.connectedOut.append(target)
+                elif obj.id == target and source not in obj.connectedIn:
+                    obj.connectedIn.append(source)
+    return parsedObjects
         
