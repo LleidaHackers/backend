@@ -8,6 +8,9 @@ router = APIRouter()
 @router.get("/")
 def get_gemini():
     solution = generate_response()
+    with open("data/possible_route.json", "r") as f:
+        nodes = json.load(f)
+    return nodes
 
     # Extraer texto del contenido generado
     try:
